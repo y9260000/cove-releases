@@ -5,338 +5,217 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cove — my little notch cove</title>
 <meta name="description" content="맥 노치에 음악 · 가사 · 일정 · 알림까지. 노치 컴패니언 Cove.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23D97757'/%3E%3Crect x='7' y='6' width='18' height='11' rx='5' fill='%23131316'/%3E%3Crect x='12.2' y='9' width='2.4' height='5.4' rx='1.2' fill='%23D97757'/%3E%3Crect x='17.4' y='9' width='2.4' height='5.4' rx='1.2' fill='%23D97757'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23111'/%3E%3Crect x='7' y='6' width='18' height='11' rx='5' fill='%23111'/%3E%3Crect x='12.2' y='9' width='2.4' height='5.4' rx='1.2' fill='%23f4f1e8'/%3E%3Crect x='17.4' y='9' width='2.4' height='5.4' rx='1.2' fill='%23f4f1e8'/%3E%3C/svg%3E">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --bg: #0b0b0e;
-    --panel: #141419;
-    --panel-2: #1b1b22;
-    --line: rgba(255,255,255,.07);
-    --text: #ececf1;
-    --dim: #9a9aa3;
-    --faint: #64646d;
-    --orange: #D97757;
-    --orange-soft: #e89b7f;
+    --paper: #f4f1e8;
+    --ink: #191813;
+    --dim: #6f6c62;
+    --line: #dcd8ca;
+    --orange: #c75b33;
   }
-  html { scroll-behavior: smooth; }
+  ::selection { background: var(--ink); color: var(--paper); }
   body {
-    background: var(--bg);
-    color: var(--text);
+    background: var(--paper);
+    color: var(--ink);
     font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", sans-serif;
-    line-height: 1.6;
+    line-height: 1.75;
     -webkit-font-smoothing: antialiased;
   }
-  a { color: inherit; text-decoration: none; }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  a { color: inherit; }
 
-  /* ───── nav ───── */
-  nav {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 22px 0;
-  }
-  .logo { display: flex; align-items: center; gap: 9px; font-weight: 700; font-size: 15px; }
-  .logo-mark {
-    width: 26px; height: 18px; background: #000; border-radius: 0 0 8px 8px;
-    display: flex; align-items: center; justify-content: center; gap: 4px;
-    border: 1px solid rgba(255,255,255,.14); border-top: none;
-  }
-  .logo-mark i, .eyes i {
-    display: block; width: 2.6px; height: 7px; border-radius: 2px; background: #fff;
-    animation: blink 4.2s infinite;
-  }
-  .logo-mark i:last-child { animation-delay: .05s; }
-  @keyframes blink {
-    0%, 91%, 100% { transform: scaleY(1); }
-    93%, 95% { transform: scaleY(.12); }
-    97% { transform: scaleY(1); }
-  }
-  nav .gh { font-size: 13.5px; color: var(--dim); border: 1px solid var(--line); padding: 7px 14px; border-radius: 99px; transition: .2s; }
-  nav .gh:hover { color: var(--text); border-color: rgba(255,255,255,.2); }
-
-  /* ───── hero ───── */
-  .hero { text-align: center; padding: 44px 0 20px; }
-  .hero h1 {
-    font-size: clamp(40px, 7vw, 62px); font-weight: 800; letter-spacing: -.03em; line-height: 1.12;
-  }
-  .hero h1 em { font-style: normal; color: var(--orange); }
-  .tagline { margin-top: 10px; font-size: 17px; color: var(--orange-soft); font-weight: 600; letter-spacing: .01em; }
-  .sub { margin-top: 6px; font-size: 16px; color: var(--dim); }
-  .cta { margin-top: 30px; display: flex; gap: 12px; justify-content: center; align-items: center; flex-wrap: wrap; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--orange); color: #17110e; font-weight: 700; font-size: 15px;
-    padding: 13px 26px; border-radius: 14px; transition: .18s;
-    box-shadow: 0 8px 30px rgba(217,119,87,.28);
-  }
-  .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 36px rgba(217,119,87,.4); }
-  .btn svg { width: 15px; height: 15px; }
-  .meta { font-size: 12.5px; color: var(--faint); margin-top: 14px; }
-
-  /* ───── notch demo ───── */
-  .demo-hint { font-size: 12.5px; color: var(--faint); margin: 34px 0 10px; }
-  .screen {
-    position: relative; margin: 0 auto; max-width: 760px; height: 280px;
-    border-radius: 18px; overflow: hidden;
-    background:
-      radial-gradient(120% 90% at 20% 110%, #2b1d3a 0%, transparent 60%),
-      radial-gradient(120% 90% at 85% 100%, #14283a 0%, transparent 55%),
-      linear-gradient(180deg, #101018 0%, #0d0d13 100%);
-    border: 1px solid var(--line);
-  }
-  .menubar {
-    height: 30px; display: flex; align-items: center; justify-content: space-between;
-    padding: 0 14px; font-size: 11px; color: rgba(255,255,255,.45);
-    background: rgba(255,255,255,.04); backdrop-filter: blur(6px);
-  }
-  .menubar .left, .menubar .right { display: flex; gap: 14px; }
+  /* ── the notch. it's real. ── */
   .notch {
-    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-    width: 200px; height: 30px; background: #000;
-    border-radius: 0 0 10px 10px;
-    transition: width .42s cubic-bezier(.32,1.35,.36,1), height .42s cubic-bezier(.32,1.35,.36,1), border-radius .3s;
-    overflow: hidden; cursor: default; z-index: 5;
+    position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+    width: 190px; height: 32px; background: #050505;
+    border-radius: 0 0 11px 11px;
+    z-index: 100; overflow: hidden;
+    transition: width .45s cubic-bezier(.3,1.25,.4,1), height .45s cubic-bezier(.3,1.25,.4,1), border-radius .35s;
   }
-  .screen:hover .notch { width: 430px; height: 185px; border-radius: 0 0 24px 24px; }
-  .eyes {
-    position: absolute; top: 0; right: 12px; height: 30px;
-    display: flex; align-items: center; gap: 4px;
-    transition: opacity .15s;
+  .notch:hover { width: 400px; height: 168px; border-radius: 0 0 22px 22px; }
+  .notch .eyes {
+    position: absolute; top: 0; right: 13px; height: 32px;
+    display: flex; align-items: center; gap: 4px; transition: opacity .12s;
   }
-  .screen:hover .eyes { opacity: 0; }
-  .player {
-    position: absolute; inset: 30px 20px 14px;
-    opacity: 0; transform: translateY(-8px);
-    transition: opacity .22s ease .16s, transform .22s ease .16s;
-    display: flex; flex-direction: column; gap: 10px;
+  .notch .eyes i {
+    display: block; width: 3px; height: 8px; border-radius: 2px; background: #f4f1e8;
+    animation: blink 4.4s infinite;
   }
-  .screen:hover .player { opacity: 1; transform: translateY(0); }
-  .p-row { display: flex; align-items: center; gap: 8px; font-size: 11px; color: rgba(255,255,255,.55); }
-  .p-cal { width: 11px; height: 11px; border-radius: 3px; background: #e5484d; flex: none; }
-  .p-main { display: flex; gap: 12px; align-items: center; }
-  .p-art {
-    width: 58px; height: 58px; border-radius: 11px; flex: none;
-    background: linear-gradient(135deg, #e88bb1 0%, #b06ee8 55%, #5a7bf0 100%);
+  .notch .wave {
+    position: absolute; top: 0; left: 13px; height: 32px;
+    display: flex; align-items: center; gap: 2.5px; transition: opacity .12s;
   }
-  .p-info { flex: 1; min-width: 0; }
-  .p-title { height: 9px; width: 65%; border-radius: 4px; background: rgba(255,255,255,.85); }
-  .p-artist { height: 7px; width: 40%; border-radius: 4px; background: rgba(255,255,255,.3); margin-top: 7px; }
-  .p-bar { height: 3px; border-radius: 2px; background: rgba(255,255,255,.18); margin-top: 12px; position: relative; overflow: hidden; }
-  .p-bar::after {
-    content: ""; position: absolute; inset: 0; width: 42%;
-    background: #fff; border-radius: 2px;
-  }
-  .screen:hover .p-bar::after { animation: progress 14s linear infinite; }
-  @keyframes progress { from { width: 30%; } to { width: 95%; } }
-  .p-lyric { text-align: center; font-size: 11px; color: rgba(255,255,255,.7); }
-  .p-controls { display: flex; justify-content: center; gap: 26px; align-items: center; }
-  .p-controls span { color: #fff; font-size: 13px; opacity: .9; }
-  .p-controls .play { font-size: 16px; }
-  .wave {
-    display: flex; align-items: center; gap: 2.5px; position: absolute; top: 0; left: 14px; height: 30px;
-    transition: opacity .15s;
-  }
-  .screen:hover .wave { opacity: 0; }
-  .wave i { width: 2.5px; border-radius: 2px; background: var(--orange); animation: eq 1s ease-in-out infinite alternate; }
-  .wave i:nth-child(1) { height: 9px; animation-delay: 0s; }
-  .wave i:nth-child(2) { height: 14px; animation-delay: .15s; }
-  .wave i:nth-child(3) { height: 6px; animation-delay: .3s; }
-  .wave i:nth-child(4) { height: 11px; animation-delay: .45s; }
+  .notch .wave i { width: 2.5px; border-radius: 2px; background: var(--orange); animation: eq 1s ease-in-out infinite alternate; }
+  .notch .wave i:nth-child(1) { height: 9px; }
+  .notch .wave i:nth-child(2) { height: 14px; animation-delay: .15s; }
+  .notch .wave i:nth-child(3) { height: 6px;  animation-delay: .3s; }
+  .notch .wave i:nth-child(4) { height: 11px; animation-delay: .45s; }
+  .notch:hover .eyes, .notch:hover .wave { opacity: 0; }
+  @keyframes blink { 0%,91%,100% { transform: scaleY(1); } 93%,95% { transform: scaleY(.12); } 97% { transform: scaleY(1); } }
   @keyframes eq { from { transform: scaleY(.35); } to { transform: scaleY(1); } }
-  .wallpaper-label {
-    position: absolute; bottom: 16px; left: 0; right: 0; text-align: center;
-    font-size: 12px; color: rgba(255,255,255,.25);
-  }
 
-  /* ───── features ───── */
-  section { padding: 72px 0 0; }
-  h2 { font-size: 26px; font-weight: 800; letter-spacing: -.02em; text-align: center; }
-  .grid {
-    margin-top: 32px; display: grid; gap: 14px;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  .player {
+    position: absolute; inset: 30px 22px 16px;
+    opacity: 0; transform: translateY(-7px);
+    transition: opacity .2s ease .18s, transform .2s ease .18s;
+    display: flex; flex-direction: column; gap: 9px;
+    color: #fff;
   }
-  .card {
-    background: var(--panel); border: 1px solid var(--line); border-radius: 18px;
-    padding: 22px 20px;
-  }
-  .card .ic {
-    width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
-    background: rgba(217,119,87,.13); color: var(--orange); margin-bottom: 13px;
-  }
-  .card .ic svg { width: 17px; height: 17px; }
-  .card h3 { font-size: 15px; font-weight: 700; }
-  .card p { font-size: 13.5px; color: var(--dim); margin-top: 5px; }
+  .notch:hover .player { opacity: 1; transform: none; }
+  .p-cal { display: flex; align-items: center; gap: 7px; font-size: 10.5px; color: rgba(255,255,255,.55); }
+  .p-cal b { width: 10px; height: 10px; border-radius: 3px; background: #e5484d; }
+  .p-main { display: flex; gap: 11px; align-items: center; }
+  .p-art { width: 50px; height: 50px; border-radius: 10px; flex: none;
+    background: linear-gradient(135deg, #e88bb1, #b06ee8 55%, #5a7bf0); }
+  .p-info { flex: 1; }
+  .p-t { height: 8px; width: 62%; border-radius: 4px; background: rgba(255,255,255,.9); }
+  .p-a { height: 6px; width: 38%; border-radius: 4px; background: rgba(255,255,255,.32); margin-top: 6px; }
+  .p-b { height: 3px; border-radius: 2px; background: rgba(255,255,255,.18); margin-top: 10px; position: relative; overflow: hidden; }
+  .p-b::after { content: ""; position: absolute; inset: 0; width: 40%; background: #fff; border-radius: 2px; }
+  .notch:hover .p-b::after { animation: prog 16s linear infinite; }
+  @keyframes prog { from { width: 32%; } to { width: 96%; } }
+  .p-l { text-align: center; font-size: 10.5px; color: rgba(255,255,255,.66); }
+  .p-c { display: flex; justify-content: center; gap: 24px; font-size: 12px; }
 
-  /* ───── install ───── */
-  .steps { margin-top: 32px; display: grid; gap: 12px; }
-  .step {
-    display: flex; gap: 16px; align-items: flex-start;
-    background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px;
+  /* ── page ── */
+  .wrap { max-width: 620px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 130px 0 0; }
+  .hint {
+    font-size: 12px; color: var(--dim); text-align: center;
+    margin-bottom: 84px; font-family: ui-monospace, "SF Mono", Menlo, monospace;
   }
-  .step b.n {
-    flex: none; width: 26px; height: 26px; border-radius: 8px;
-    background: rgba(217,119,87,.15); color: var(--orange);
-    display: flex; align-items: center; justify-content: center; font-size: 13px;
+  h1 { font-size: 58px; font-weight: 800; letter-spacing: -.035em; line-height: 1.05; }
+  h1 small { display: block; font-size: 15px; font-weight: 600; color: var(--orange); letter-spacing: 0; margin-top: 14px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+  .lede { margin-top: 22px; font-size: 17px; max-width: 34em; }
+  .lede b { font-weight: 700; }
+  .dl { margin-top: 34px; display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .dl a.button {
+    display: inline-block; background: var(--ink); color: var(--paper);
+    font-size: 15px; font-weight: 600; padding: 12px 22px; border-radius: 10px;
+    text-decoration: none; transition: transform .15s;
   }
-  .step h4 { font-size: 14.5px; font-weight: 700; }
-  .step p { font-size: 13.5px; color: var(--dim); margin-top: 3px; }
-  code.inline {
-    background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px;
-    padding: 2px 7px; font-size: 12.5px; font-family: ui-monospace, "SF Mono", Menlo, monospace;
-    color: var(--orange-soft);
+  .dl a.button:hover { transform: translateY(-1px); }
+  .dl span { font-size: 12.5px; color: var(--dim); font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+
+  section { margin-top: 96px; }
+  .label {
+    font-size: 12px; font-weight: 600; color: var(--dim); letter-spacing: .08em;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    border-bottom: 1px solid var(--line); padding-bottom: 10px;
+  }
+  .feature { padding: 20px 0; border-bottom: 1px solid var(--line); }
+  .feature h3 { display: inline; font-size: 16px; font-weight: 700; }
+  .feature p { display: inline; font-size: 16px; color: var(--dim); }
+  .feature p::before { content: " — "; color: var(--line); }
+
+  ol.steps { margin-top: 8px; list-style: none; counter-reset: n; }
+  ol.steps li { counter-increment: n; padding: 20px 0 20px 44px; position: relative; border-bottom: 1px solid var(--line); font-size: 16px; }
+  ol.steps li::before {
+    content: counter(n); position: absolute; left: 2px; top: 22px;
+    width: 24px; height: 24px; border: 1.5px solid var(--ink); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; line-height: 1;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  ol.steps li .d { color: var(--dim); }
+  code {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13.5px;
+    background: #eae6d8; padding: 2px 7px; border-radius: 6px;
   }
   pre {
-    margin-top: 10px; background: var(--panel-2); border: 1px solid var(--line);
-    border-radius: 12px; padding: 14px 16px; overflow-x: auto;
-    font-size: 12.5px; font-family: ui-monospace, "SF Mono", Menlo, monospace;
-    color: #c9c9d4; line-height: 1.55;
+    margin-top: 18px; background: #101010; color: #d9d5c9;
+    border-radius: 14px; padding: 18px 20px; overflow-x: auto;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13px; line-height: 1.6;
   }
-  pre .o { color: var(--orange-soft); }
-
-  /* ───── claude ───── */
-  .claude-box {
-    margin-top: 32px; background: var(--panel); border: 1px solid var(--line);
-    border-radius: 18px; padding: 24px;
-  }
-  .claude-box h3 { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
-  .claude-box p { font-size: 13.5px; color: var(--dim); margin-top: 6px; }
-  .buddy {
-    display: inline-flex; width: 22px; height: 15px; background: var(--orange); border-radius: 5px;
-    align-items: center; justify-content: center; gap: 3px;
-  }
-  .buddy i { display: block; width: 2.2px; height: 6px; border-radius: 2px; background: #17110e; animation: blink 3.6s infinite; }
+  pre b { color: #e89b7f; font-weight: 400; }
+  section > p.note { margin-top: 16px; font-size: 15px; color: var(--dim); }
 
   footer {
-    margin-top: 88px; padding: 30px 0 46px; border-top: 1px solid var(--line);
-    text-align: center; font-size: 13px; color: var(--faint);
+    margin: 110px 0 0; border-top: 1px solid var(--line);
+    padding: 34px 0 70px; display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; color: var(--dim);
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
   }
-  footer a { color: var(--dim); border-bottom: 1px solid var(--line); }
-  footer .foot-eyes { display: flex; justify-content: center; gap: 4px; margin-bottom: 14px; }
-  footer .foot-eyes i { display: block; width: 3px; height: 9px; border-radius: 2px; background: var(--faint); animation: blink 5s infinite; }
+  footer .feyes { display: inline-flex; gap: 3.5px; margin-right: 9px; vertical-align: -1px; }
+  footer .feyes i { display: block; width: 2.6px; height: 8px; border-radius: 2px; background: var(--ink); animation: blink 5.2s infinite; }
+  footer a { color: var(--dim); }
+
+  @media (max-width: 560px) {
+    h1 { font-size: 44px; }
+    .notch { width: 150px; height: 28px; }
+    .notch:hover { width: 340px; }
+  }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <nav>
-    <a class="logo" href="#">
-      <span class="logo-mark"><i></i><i></i></span> Cove
-    </a>
-    <a class="gh" href="https://github.com/y9260000/cove-releases" target="_blank">GitHub</a>
-  </nav>
-
-  <header class="hero">
-    <h1>맥 노치에 사는<br><em>작은 친구</em></h1>
-    <p class="tagline">my little notch cove</p>
-    <p class="sub">음악 · 가사 · 일정 · 알림까지, 죽어있던 노치가 일하기 시작해요</p>
-    <div class="cta">
-      <a class="btn" href="https://github.com/y9260000/cove-releases/releases/latest">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5"/><path d="M4 21h16"/></svg>
-        무료 다운로드
-      </a>
+<div class="notch" aria-hidden="true">
+  <div class="wave"><i></i><i></i><i></i><i></i></div>
+  <div class="eyes"><i></i><i></i></div>
+  <div class="player">
+    <div class="p-cal"><b></b>14:00&ensp;디자인 리뷰</div>
+    <div class="p-main">
+      <div class="p-art"></div>
+      <div class="p-info"><div class="p-t"></div><div class="p-a"></div><div class="p-b"></div></div>
     </div>
-    <p class="meta">macOS 14.4+ · Apple Silicon · 무료</p>
+    <div class="p-l">지금 나오는 가사가 여기 따라와요</div>
+    <div class="p-c"><span>◂◂</span><span>❚❚</span><span>▸▸</span></div>
+  </div>
+</div>
 
-    <p class="demo-hint">↓ 노치에 마우스를 올려보세요</p>
-    <div class="screen">
-      <div class="menubar">
-        <div class="left"><span>&#63743;</span><span>Cove</span><span>파일</span><span>편집</span></div>
-        <div class="right"><span>배터리 100%</span><span>수 9:41</span></div>
-      </div>
-      <div class="notch">
-        <div class="wave"><i></i><i></i><i></i><i></i></div>
-        <div class="eyes"><i></i><i></i></div>
-        <div class="player">
-          <div class="p-row"><span class="p-cal"></span><span>14:00 &nbsp;디자인 리뷰</span></div>
-          <div class="p-main">
-            <div class="p-art"></div>
-            <div class="p-info">
-              <div class="p-title"></div>
-              <div class="p-artist"></div>
-              <div class="p-bar"></div>
-            </div>
-          </div>
-          <div class="p-lyric">지금 나오는 가사가 여기에 따라와요</div>
-          <div class="p-controls"><span>◂◂</span><span class="play">❚❚</span><span>▸▸</span></div>
-        </div>
-      </div>
-      <div class="wallpaper-label">호버하면 펼쳐지고, 벗어나면 노치 속으로 사라져요</div>
+<div class="wrap">
+  <header>
+    <p class="hint">↑ 이 노치, 눌러보진 말고 올려보세요</p>
+    <h1>Cove<small>my little notch cove</small></h1>
+    <p class="lede">
+      맥 노치는 하루 종일 자리만 차지하죠.
+      Cove를 설치하면 그 자리에서 <b>지금 재생 중인 음악</b>이 보이고,
+      <b>가사</b>가 따라 흐르고, <b>다음 일정</b>이 기다리고,
+      <b>Claude Code</b>가 다 됐다고 알려줍니다.
+    </p>
+    <div class="dl">
+      <a class="button" href="https://github.com/y9260000/cove-releases/releases/latest">Cove.dmg 받기</a>
+      <span>v0.2.2 · macOS 14.4+ · Apple&nbsp;Silicon · 무료</span>
     </div>
   </header>
 
-  <section id="features">
-    <h2>노치 하나로 이만큼</h2>
-    <div class="grid">
-      <div class="card">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-        <h3>지금 재생 중</h3>
-        <p>유튜브 뮤직, Spotify, 사파리 — 시스템에 재생을 알리는 모든 앱을 지원해요. 앨범아트, 시크 슬라이더, 앨범색 이퀄라이저까지.</p>
-      </div>
-      <div class="card">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
-        <h3>싱크 가사</h3>
-        <p>노래방처럼 지금 부르는 줄이 따라와요. 노치 아래 플로팅 가사 바로 어디서든 흥얼거리세요.</p>
-      </div>
-      <div class="card">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
-        <h3>다음 일정</h3>
-        <p>노치를 펼치면 다음 일정이 보이고, 시작 10분 전엔 배너로 알려줘요. 구글 캘린더도 맥 캘린더 연동으로 OK.</p>
-      </div>
-      <div class="card">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l3-8 4 16 3-8h3"/><path d="M20 12h2"/></svg></div>
-        <h3>다이나믹 HUD</h3>
-        <p>볼륨 · 밝기 조절, 에어팟 연결, 충전기 연결 — 노치가 옆으로 부풀며 다이나믹 아일랜드처럼 보여줘요.</p>
-      </div>
-      <div class="card">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><path d="M8 16h.01M16 16h.01"/></svg></div>
-        <h3>Claude Code 알림</h3>
-        <p>Claude가 답변을 마치면 노치에 클로드가 빼꼼 알려줘요. 클릭하면 바로 그 창으로, 세션 잔량도 함께.</p>
-      </div>
-      <div class="card">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 10v2M15 10v2"/></svg></div>
-        <h3>Cove 캐릭터</h3>
-        <p>음악이 없을 땐 노치 옆에서 눈만 깜빡여요. 맥이 바쁠수록 눈도 바빠지는 건 비밀.</p>
-      </div>
-    </div>
+  <section>
+    <p class="label">무엇을 하나요</p>
+    <div class="feature"><h3>지금 재생 중</h3><p>유튜브 뮤직, Spotify, 사파리 탭 — 시스템에 재생을 알리는 모든 앱. 앨범아트와 시크 슬라이더, 앨범 색을 따라가는 이퀄라이저.</p></div>
+    <div class="feature"><h3>싱크 가사</h3><p>노래방처럼 지금 부르는 줄이 따라옵니다. 노치 아래 작은 가사 바로 띄워둘 수도 있어요.</p></div>
+    <div class="feature"><h3>다음 일정</h3><p>노치를 펼치면 다음 일정이 한 줄로. 시작 10분 전엔 조용히 배너로 알려줍니다. 구글 캘린더는 맥 캘린더 연동으로.</p></div>
+    <div class="feature"><h3>볼륨 · 밝기 · 에어팟 · 충전</h3><p>조절하는 순간 노치가 옆으로 부풀며 보여주고, 끝나면 스르륵 돌아갑니다.</p></div>
+    <div class="feature"><h3>Claude Code</h3><p>답변이 끝나면 노치에서 클로드가 알려줘요. 클릭하면 그 창으로, 세션 잔량도 함께.</p></div>
+    <div class="feature"><h3>그리고</h3><p>음악이 없을 땐 눈만 깜빡이며 기다립니다. 맥이 바쁠수록 눈도 바빠져요.</p></div>
   </section>
 
-  <section id="install">
-    <h2>설치는 금방이에요</h2>
-    <div class="steps">
-      <div class="step">
-        <b class="n">1</b>
-        <div><h4>Cove.dmg 다운로드</h4><p>위의 다운로드 버튼을 누르고, 열린 창에서 Cove를 Applications로 드래그하세요.</p></div>
-      </div>
-      <div class="step">
-        <b class="n">2</b>
-        <div><h4>첫 실행 허용</h4><p>아직 애플 공증 서명이 없어 경고가 떠요. <b>시스템 설정 → 개인정보 보호 및 보안</b> 맨 아래 <b>"그래도 열기"</b>를 누르거나, 터미널에서 <code class="inline">xattr -cr /Applications/Cove.app</code> 한 줄이면 됩니다.</p></div>
-      </div>
-      <div class="step">
-        <b class="n">3</b>
-        <div><h4>노치에 정박 완료</h4><p>메뉴바의 노치 아이콘 → 설정에서 <b>로그인 시 자동 시작</b>을 켜두면 항상 함께해요. 캘린더 권한은 일정 표시용이에요 (선택).</p></div>
-      </div>
-    </div>
+  <section>
+    <p class="label">설치</p>
+    <ol class="steps">
+      <li><b>Cove.dmg</b>를 받아 Applications로 드래그하세요.</li>
+      <li>첫 실행 때 경고가 뜹니다. 아직 애플 공증 서명이 없어서 그래요. <span class="d">시스템 설정 → 개인정보 보호 및 보안 → <b>"그래도 열기"</b>, 또는 터미널에서</span> <code>xattr -cr /Applications/Cove.app</code></li>
+      <li>메뉴바의 노치 아이콘 → 설정에서 <b>로그인 시 자동 시작</b>을 켜두면 끝. <span class="d">캘린더 권한은 일정 표시용이에요.</span></li>
+    </ol>
   </section>
 
-  <section id="claude">
-    <div class="claude-box">
-      <h3><span class="buddy"><i></i><i></i></span> Claude Code와 함께 쓰기</h3>
-      <p>Stop 훅 한 줄이면 Claude가 응답을 마칠 때마다 노치가 알려줘요. 어떤 스크립트에서든 <code class="inline">Cove notify "메시지"</code>로 배너를 띄울 수 있어요.</p>
+  <section>
+    <p class="label">Claude Code와 함께</p>
+    <p class="note">Stop 훅 한 줄이면 응답이 끝날 때마다 노치가 알려줍니다. 아무 스크립트에서나 <code>Cove notify "메시지"</code>도 됩니다.</p>
 <pre>{
   "hooks": {
     "Stop": [{ "hooks": [{
       "type": "command",
-      "command": "<span class="o">/Applications/Cove.app/Contents/MacOS/Cove notify \"답변 완료\"</span> 2>/dev/null || true"
+      "command": "<b>/Applications/Cove.app/Contents/MacOS/Cove notify \"답변 완료\"</b> 2>/dev/null || true"
     }] }]
   }
 }</pre>
-    </div>
   </section>
 
   <footer>
-    <div class="foot-eyes"><i></i><i></i></div>
-    <p>Cove — my little notch cove</p>
-    <p style="margin-top:6px"><a href="https://github.com/y9260000/cove-releases/releases/latest">다운로드</a> · <a href="https://github.com/y9260000/cove-releases/issues">버그 제보</a></p>
+    <span><span class="feyes"><i></i><i></i></span>Cove</span>
+    <span><a href="https://github.com/y9260000/cove-releases">GitHub</a> · <a href="https://github.com/y9260000/cove-releases/issues">버그 제보</a></span>
   </footer>
 </div>
 
