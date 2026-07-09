@@ -313,6 +313,91 @@
     .notch { width: 150px; height: 28px; }
     .notch:hover { width: 340px; }
   }
+
+  /* ═══ upgraded mock components ═══ */
+  .ci { width: 13px; height: 13px; opacity: .92; }
+  .ci.big { width: 17px; height: 17px; }
+  .screenlet {
+    width: 100%; max-width: 330px; height: 96px;
+    border-radius: 16px; position: relative; overflow: hidden;
+    background:
+      radial-gradient(130% 120% at 18% 130%, var(--w1, #3a2b52) 0%, transparent 62%),
+      radial-gradient(130% 120% at 86% 120%, var(--w2, #1d3550) 0%, transparent 58%),
+      #101017;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.09), 0 18px 34px rgba(24,19,16,.18);
+  }
+  .screenlet .sbar {
+    height: 15px; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 10px; background: rgba(255,255,255,.06);
+  }
+  .screenlet .sbar i { display: block; width: 22px; height: 3.5px; border-radius: 2px; background: rgba(255,255,255,.14); }
+  .snotch {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    background: #000; border-radius: 0 0 12px 12px;
+    display: flex; align-items: center;
+    box-shadow: 0 10px 24px rgba(0,0,0,.4);
+  }
+  .snotch.collapsed { width: 200px; height: 34px; justify-content: space-between; padding: 0 12px; }
+  .snotch .art {
+    width: 21px; height: 21px; border-radius: 6px;
+    background: linear-gradient(135deg, #f0a7c3 0%, #b06ee8 55%, #5a7bf0 100%);
+    position: relative; overflow: hidden;
+  }
+  .snotch .art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, rgba(255,255,255,.4) 0%, transparent 42%); }
+  .weq { display: flex; gap: 2.6px; align-items: center; }
+  .weq i { width: 2.6px; border-radius: 2px; background: var(--orange); animation: eq 1s ease-in-out infinite alternate; }
+  .weq i:nth-child(1) { height: 10px; } .weq i:nth-child(2) { height: 15px; animation-delay: .15s; }
+  .weq i:nth-child(3) { height: 7px; animation-delay: .3s; } .weq i:nth-child(4) { height: 12px; animation-delay: .45s; }
+  .lyricpill {
+    position: absolute; top: 44px; left: 50%; transform: translateX(-50%);
+    background: #000; border: 1px solid rgba(255,255,255,.16); border-radius: 99px;
+    padding: 6px 16px; display: flex; align-items: center; gap: 7px;
+    color: rgba(255,255,255,.88); font-size: 11.5px; white-space: nowrap;
+    box-shadow: 0 10px 24px rgba(0,0,0,.35);
+  }
+  .lyricpill .roll { display: flex; flex-direction: column; height: 17px; overflow: hidden; }
+  .lyricpill .roll div { height: 17px; line-height: 17px; animation: roll 7.5s infinite; }
+  @keyframes roll {
+    0%, 28% { transform: translateY(0); }
+    33%, 61% { transform: translateY(-17px); }
+    66%, 94% { transform: translateY(-34px); }
+    100% { transform: translateY(-51px); }
+  }
+  .snotch.panel {
+    width: 250px; height: 62px; border-radius: 0 0 16px 16px;
+    flex-direction: column; justify-content: flex-end; align-items: stretch;
+    padding: 0 14px 10px;
+  }
+  .snotch.panel .prow {
+    display: flex; align-items: center; gap: 7px;
+    color: #fff; font-size: 11.5px;
+  }
+  .snotch.panel .prow .t { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .snotch.panel .prow .d { color: rgba(255,255,255,.5); }
+  .snotch.hud {
+    width: 240px; height: 34px; justify-content: space-between; padding: 0 13px;
+    animation: stretch2 3.4s cubic-bezier(.34,1.3,.4,1) infinite;
+  }
+  @keyframes stretch2 { 0%, 22%, 100% { width: 200px; } 38%, 80% { width: 288px; } }
+  .snotch.hud .spk { display: flex; color: #fff; }
+  .snotch.hud .vbar { width: 84px; height: 3.5px; border-radius: 3px; background: rgba(255,255,255,.22); position: relative; }
+  .snotch.hud .vbar::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 58%; border-radius: 3px; background: #fff; }
+  .snotch.banner {
+    background: var(--orange); color: var(--ink);
+    width: max-content; height: 40px; gap: 10px; padding: 0 20px;
+    font-size: 13px; font-weight: 700; border-radius: 0 0 14px 14px;
+    box-shadow: 0 14px 30px rgba(0,0,0,.35);
+    white-space: nowrap;
+  }
+  .cchar { width: 32px; height: 21px; flex: none; }
+  .snotch.banner .r { font-size: 11px; font-weight: 600; color: rgba(24,19,16,.55); margin-left: 6px; font-variant-numeric: tabular-nums; }
+  .t-claude .screenlet { max-width: 420px; --w1: #241a30; --w2: #132335; }
+  .bigeyes { transition: transform .3s cubic-bezier(.3,1.2,.4,1); }
+  /* hero mock polish */
+  .mocknotch .p-time { display: flex; justify-content: space-between; font-size: 8.5px; color: rgba(255,255,255,.4); margin-top: 5px; font-variant-numeric: tabular-nums; }
+  .p-b .knob { position: absolute; top 50%; left: 44%; width: 7px; height: 7px; border-radius: 50%; background: #fff; transform: translate(-50%, -2px); box-shadow: 0 1px 4px rgba(0,0,0,.5); }
+  .heroscreen .bar .g { display: flex; align-items: center; gap: 9px; }
+
 </style>
 </head>
 <body>
@@ -327,7 +412,7 @@
       <div class="p-info"><div class="p-t"></div><div class="p-a"></div><div class="p-b"></div></div>
     </div>
     <div class="p-l">지금 나오는 가사가 여기 따라와요</div>
-    <div class="p-c"><span>◂◂</span><span>❚❚</span><span>▸▸</span></div>
+    <div class="p-c"><svg class="ci" viewBox="0 0 24 24" fill="currentColor"><path d="M12.5 6.5v11L4.5 12zM21.5 6.5v11l-8-5.5z"/></svg><svg class="ci big" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4.2" height="14" rx="1.6"/><rect x="13.8" y="5" width="4.2" height="14" rx="1.6"/></svg><svg class="ci" viewBox="0 0 24 24" fill="currentColor"><path d="M11.5 6.5v11l8-5.5zM2.5 6.5v11l8-5.5z"/></svg></div>
   </div>
 </div>
 
@@ -351,14 +436,14 @@
     <p class="meta">macOS 14.4+ · Apple Silicon · 위에 붙어있는 노치를 올려보세요 ↑</p>
 
     <div class="heroscreen">
-      <div class="bar"><span>&#63743;&ensp;Cove&ensp;파일&ensp;편집</span><span>배터리 100% · 수 9:41</span></div>
+      <div class="bar"><span class="g">&#63743;&ensp;Cove&ensp;파일&ensp;편집</span><span class="g"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2.5 9.5a14 14 0 0119 0M6 13.5a9 9 0 0112 0M9.5 17.2a4.4 4.4 0 015 0"/><circle cx="12" cy="20" r="1.4" fill="currentColor" stroke="none"/></svg><svg width="16" height="10" viewBox="0 0 30 16"><rect x="1" y="1" width="24" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".5"/><rect x="3.4" y="3.4" width="16" height="9.2" rx="2.4" fill="currentColor"/><rect x="26.6" y="5" width="2.6" height="6" rx="1.3" fill="currentColor" opacity=".5"/></svg><span>수 9:41</span></span></div>
       <div class="mocknotch">
         <div class="p-cal"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="4.5" fill="#e5484d"/><rect x="3" y="4.5" width="18" height="6" rx="3" fill="#b93338"/><rect x="7" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="14.4" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="7" y="13" width="4" height="4" rx="1.2" fill="#ffd9d9"/></svg>19:00&ensp;저녁 약속</div>
         <div class="p-main">
           <div class="p-art"></div>
-          <div class="p-info"><div class="p-t"></div><div class="p-a"></div><div class="p-b" style="overflow:hidden"><i style="position:absolute;inset:0;width:44%;background:#fff;border-radius:2px"></i></div></div>
+          <div class="p-info"><div class="p-t"></div><div class="p-a"></div><div class="p-b" style="overflow:hidden"><i style="position:absolute;inset:0;width:44%;background:#fff;border-radius:2px"></i></div><div class="p-time"><span>1:24</span><span>3:53</span></div></div>
         </div>
-        <div class="p-c" style="margin-top:2px"><span>◂◂</span><span>❚❚</span><span>▸▸</span></div>
+        <div class="p-c" style="margin-top:2px"><svg class="ci" viewBox="0 0 24 24" fill="currentColor"><path d="M12.5 6.5v11L4.5 12zM21.5 6.5v11l-8-5.5z"/></svg><svg class="ci big" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4.2" height="14" rx="1.6"/><rect x="13.8" y="5" width="4.2" height="14" rx="1.6"/></svg><svg class="ci" viewBox="0 0 24 24" fill="currentColor"><path d="M11.5 6.5v11l8-5.5zM2.5 6.5v11l8-5.5z"/></svg></div>
         <div class="lyricbar">너와 걷던 그 밤, 별이 쏟아지던 길 ♪</div>
       </div>
     </div>
@@ -373,32 +458,27 @@
     <div class="tile t-music">
       <h2>지금 뭐 듣는지,<br>노치가 알아요</h2>
       <p>유튜브 뮤직, Spotify, 사파리 탭까지 — 시스템에 재생을 알리는 모든 앱. 이퀄라이저는 앨범 색을 따라가요.</p>
-      <div class="art"><div class="mini"><div class="a"></div><div class="weq"><i></i><i></i><i></i><i></i></div></div></div>
+      <div class="art"><div class="screenlet" style="--w1:#472b52;--w2:#1d3550"><div class="sbar"><i></i><i></i></div><div class="snotch collapsed"><div class="art"></div><div class="weq"><i></i><i></i><i></i><i></i></div></div></div></div>
     </div>
     <div class="tile t-lyric">
       <h2>가사는<br>노래방처럼</h2>
       <p>지금 부르는 줄이 굴러가며 따라옵니다. 노치 아래 가사 바로 띄워둘 수도 있어요.</p>
-      <div class="art"><div class="lyr"><div class="roll">
-        <div>지금 부르는 가사가</div>
-        <div>한 줄씩 굴러가면서</div>
-        <div>노치 아래 따라와요 ♪</div>
-        <div>지금 부르는 가사가</div>
-      </div></div></div>
+      <div class="art"><div class="screenlet" style="--w1:#1d4034;--w2:#14324a"><div class="sbar"><i></i><i></i></div><div class="snotch collapsed"><div class="art"></div><div class="weq"><i></i><i></i><i></i><i></i></div></div><div class="lyricpill"><svg width="10" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M9 18V5l12-2v13a3 3 0 11-2-2.83V7.5L11 9v9a3 3 0 11-2-2.83z" opacity=".85"/></svg><div class="roll"><div>너와 걷던 그 밤</div><div>별이 쏟아지던 길</div><div>우리 노래가 흐르면</div><div>너와 걷던 그 밤</div></div></div></div></div>
     </div>
     <div class="tile t-cal">
       <h2>다음 일정도<br>한 줄로</h2>
       <p>노치를 펼치면 다음 일정이 기다려요. 시작 10분 전엔 조용히 배너로. 구글 캘린더는 맥 캘린더 연동으로.</p>
-      <div class="art"><div class="calrow"><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="4.5" fill="#e5484d"/><rect x="3" y="4.5" width="18" height="6" rx="3" fill="#b93338"/><rect x="7" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="14.4" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="7" y="13" width="4" height="4" rx="1.2" fill="#ffd9d9"/></svg>내일 10:00 <span class="dim2">치과 예약</span></div></div>
+      <div class="art"><div class="screenlet" style="--w1:#4a3b1d;--w2:#1d3550"><div class="sbar"><i></i><i></i></div><div class="snotch panel"><div class="prow"><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="4.5" fill="#e5484d"/><rect x="3" y="4.5" width="18" height="6" rx="3" fill="#b93338"/><rect x="7" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="14.4" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="7" y="13" width="4" height="4" rx="1.2" fill="#ffd9d9"/></svg><span class="t">내일 10:00</span><span class="d">치과 예약</span></div></div></div></div>
     </div>
     <div class="tile t-hud">
       <h2>볼륨을 올리면<br>노치가 부풀어요</h2>
       <p>볼륨 · 밝기 · 에어팟 연결 · 충전까지, 다이나믹 아일랜드처럼 벌어졌다 스르륵 돌아갑니다.</p>
-      <div class="art"><div class="hudmock"><svg class="spk" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="#fff" stroke="none"/><path d="M15.5 8.5a5 5 0 010 7"/><path d="M18.5 5.5a9 9 0 010 13"/></svg><div class="vbar"></div></div></div>
+      <div class="art"><div class="screenlet" style="--w1:#52281d;--w2:#301d50"><div class="sbar"><i></i><i></i></div><div class="snotch hud"><span class="spk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="#fff" stroke="none"/><path d="M15.5 8.5a5 5 0 010 7"/><path d="M18.5 5.5a9 9 0 010 13"/></svg></span><div class="vbar"></div></div></div></div></div>
     </div>
     <div class="tile t-claude wide">
       <h2>Claude Code가 끝나면, 노치가 알려줘요</h2>
       <p>답변이 끝나면 클로드가 빼꼼. 클릭하면 그 창으로 바로 이동하고, 세션 잔량도 함께 보여줍니다.</p>
-      <div class="art"><div class="claudebanner"><span class="buddy"><i></i><i></i></span>답변 완료<span class="r">초기화 3시간 41분 남음</span></div></div>
+      <div class="art"><div class="screenlet" style="--w1:#241a30;--w2:#132335"><div class="sbar"><i></i><i></i></div><div class="snotch banner"><svg class="cchar" viewBox="140 118 641 415" aria-hidden="true"><path d="M219.939 128C231.287 128.427 243.841 128.163 255.294 128.163L316.847 128.162L504.334 128.156L635.994 128.152L678.041 128.16C684.188 128.161 694.172 128.458 700.088 128.009L700.003 286.798C726.5 286.369 753.431 286.921 780 286.702V369.651L732.281 369.667C721.737 369.664 710.528 369.882 700.053 369.657C700.209 396.52 699.775 423.589 700.159 450.42C687.428 449.864 673.006 450.96 660.409 450.313C660.956 455.438 660.587 469.605 660.584 475.227C660.503 492.951 660.534 510.674 660.675 528.396L636.041 528.349C631.088 528.342 624.803 528.176 619.987 528.639C619.606 502.914 619.912 476.117 619.99 450.326C610.887 450.689 601.497 450.164 592.362 450.383C588.484 450.473 584.262 450.507 580.409 450.313C580.956 455.438 580.587 469.604 580.584 475.229C580.503 492.942 580.534 510.655 580.675 528.37C569.781 528.673 558.66 528.12 547.744 528.352C545.097 528.408 542.644 528.382 539.987 528.639C539.594 502.939 539.956 476.086 539.975 450.339C502.809 449.908 464.981 450.258 427.771 450.261L395.338 450.267C390.805 450.27 384.258 450.57 380.023 450.305C380.433 476.18 379.813 502.405 380.157 528.364L355.57 528.349C350.391 528.349 344.542 528.233 339.437 528.573C339.106 520.636 339.403 510.354 339.407 502.285L339.384 450.349C333.308 450.683 324.748 450.298 318.438 450.37C313.431 450.426 304.703 450.652 300.02 450.317C300.215 457.758 300.062 465.823 300.062 473.301C299.994 491.654 300.027 510.011 300.158 528.364L275.57 528.349C270.392 528.349 264.541 528.233 259.437 528.573C259.107 520.72 259.404 510.461 259.408 502.451L259.383 450.349C257.722 450.489 255.857 450.367 254.178 450.389C242.82 450.52 231.323 450.039 219.984 450.576C219.624 423.923 219.898 396.301 219.991 369.592C213.39 370.017 204.234 369.56 197.41 369.673C178.491 369.976 158.868 369.229 140 369.764V286.887C166.502 286.855 193.55 286.598 220.021 286.883C219.797 269.281 219.95 251.415 219.95 233.798L219.939 128Z" fill="#181310"/><rect x="299" y="211" width="41" height="76" rx="14" fill="#e9825b"/><rect x="580" y="211" width="41" height="76" rx="14" fill="#e9825b"/></svg>답변 완료<span class="r">초기화 3시간 41분 남음</span></div></div></div>
     </div>
     <div class="tile t-eyes wide">
       <h2 style="text-align:center">음악이 없을 땐, 그냥 같이 있어요</h2>
@@ -454,5 +534,15 @@
   </footer>
 </div>
 
+<script>
+  const eyeGroups = document.querySelectorAll('.bigeyes');
+  addEventListener('mousemove', e => {
+    eyeGroups.forEach(el => {
+      const r = el.getBoundingClientRect();
+      const dx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / (innerWidth / 2)));
+      el.style.transform = `translateX(${dx * 16}px)`;
+    });
+  });
+</script>
 </body>
 </html>
