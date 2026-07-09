@@ -1,6 +1,6 @@
 # Cove
 
-<p align="center"><b>맥 노치를 작은 만(灣)으로.</b><br>음악 · 가사 · 일정 · 알림이 정박하는 노치 컴패니언</p>
+<p align="center"><b>my little notch cove</b><br>맥 노치에 음악 · 가사 · 일정 · 알림까지</p>
 
 ## 다운로드
 
