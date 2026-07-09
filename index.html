@@ -5,76 +5,64 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cove — my little notch cove</title>
 <meta name="description" content="맥 노치에 음악 · 가사 · 일정 · 알림까지. 노치 컴패니언 Cove.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23111'/%3E%3Crect x='12.2' y='11' width='2.4' height='9' rx='1.2' fill='%23f4f1e8'/%3E%3Crect x='17.4' y='11' width='2.4' height='9' rx='1.2' fill='%23f4f1e8'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23E9825B'/%3E%3Crect x='7' y='7' width='18' height='12' rx='6' fill='%23181310'/%3E%3Crect x='12.4' y='10' width='2.4' height='6' rx='1.2' fill='%23E9825B'/%3E%3Crect x='17.2' y='10' width='2.4' height='6' rx='1.2' fill='%23E9825B'/%3E%3C/svg%3E">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --paper: #f5f2ea;
-    --ink: #26241d;
-    --dim: #7c786b;
-    --line: #e0dccd;
-    --orange: #c2612e;
-    --serif-kr: "Gowun Batang", "Apple SD Gothic Neo", serif;
-    --serif-en: "Cormorant Garamond", Georgia, serif;
-    --mono: ui-monospace, "SF Mono", Menlo, monospace;
+    --cream: #f7efe4;
+    --ink: #181310;
+    --dim: #6f645a;
+    --orange: #e9825b;
+    --orange-deep: #d96a42;
+    --lilac: #cfc0f5;
+    --mint: #bfe3c2;
+    --butter: #f5d478;
+    --r: 32px;
   }
-  ::selection { background: var(--ink); color: var(--paper); }
+  ::selection { background: var(--ink); color: var(--cream); }
+  html { scroll-behavior: smooth; }
   body {
-    background: var(--paper);
+    background: var(--cream);
     color: var(--ink);
-    font-family: var(--serif-kr);
-    font-weight: 400;
-    line-height: 2;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", sans-serif;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
-  a { color: inherit; }
+  a { color: inherit; text-decoration: none; }
 
-  /* ── the notch ── */
+  /* ═══ the real notch ═══ */
   .notch {
     position: fixed; top: 0; left: 50%; transform: translateX(-50%);
-    width: 190px; height: 32px; background: #060606;
-    border-radius: 0 0 11px 11px;
-    z-index: 100; overflow: hidden;
-    transition: width .45s cubic-bezier(.3,1.22,.4,1), height .45s cubic-bezier(.3,1.22,.4,1), border-radius .35s;
+    width: 190px; height: 32px; background: #0a0a0a;
+    border-radius: 0 0 12px 12px;
+    z-index: 200; overflow: hidden;
+    transition: width .45s cubic-bezier(.3,1.3,.4,1), height .45s cubic-bezier(.3,1.3,.4,1), border-radius .3s;
+    box-shadow: 0 6px 24px rgba(24,19,16,.18);
   }
-  .notch:hover { width: 400px; height: 168px; border-radius: 0 0 22px 22px; }
-  .notch .eyes {
-    position: absolute; top: 0; right: 13px; height: 32px;
-    display: flex; align-items: center; gap: 4px; transition: opacity .12s;
-  }
-  .notch .eyes i {
-    display: block; width: 3px; height: 8px; border-radius: 2px; background: #f5f2ea;
-    animation: blink 4.4s infinite;
-  }
-  .notch .wave {
-    position: absolute; top: 0; left: 13px; height: 32px;
-    display: flex; align-items: center; gap: 2.5px; transition: opacity .12s;
-  }
+  .notch:hover { width: 400px; height: 168px; border-radius: 0 0 26px 26px; }
+  .notch .eyes { position: absolute; top: 0; right: 13px; height: 32px; display: flex; align-items: center; gap: 4px; transition: opacity .12s; }
+  .notch .eyes i { display: block; width: 3px; height: 8px; border-radius: 2px; background: #fff; animation: blink 4.4s infinite; }
+  .notch .wave { position: absolute; top: 0; left: 13px; height: 32px; display: flex; align-items: center; gap: 2.5px; transition: opacity .12s; }
   .notch .wave i { width: 2.5px; border-radius: 2px; background: var(--orange); animation: eq 1s ease-in-out infinite alternate; }
   .notch .wave i:nth-child(1) { height: 9px; }
   .notch .wave i:nth-child(2) { height: 14px; animation-delay: .15s; }
-  .notch .wave i:nth-child(3) { height: 6px;  animation-delay: .3s; }
+  .notch .wave i:nth-child(3) { height: 6px; animation-delay: .3s; }
   .notch .wave i:nth-child(4) { height: 11px; animation-delay: .45s; }
   .notch:hover .eyes, .notch:hover .wave { opacity: 0; }
   @keyframes blink { 0%,91%,100% { transform: scaleY(1); } 93%,95% { transform: scaleY(.12); } 97% { transform: scaleY(1); } }
   @keyframes eq { from { transform: scaleY(.35); } to { transform: scaleY(1); } }
-
   .player {
-    position: absolute; inset: 30px 22px 16px;
+    position: absolute; inset: 30px 22px 16px; color: #fff;
     opacity: 0; transform: translateY(-7px);
     transition: opacity .2s ease .18s, transform .2s ease .18s;
     display: flex; flex-direction: column; gap: 9px;
-    color: #fff; font-family: -apple-system, sans-serif;
   }
   .notch:hover .player { opacity: 1; transform: none; }
   .p-cal { display: flex; align-items: center; gap: 7px; font-size: 10.5px; color: rgba(255,255,255,.55); }
   .p-cal b { width: 10px; height: 10px; border-radius: 3px; background: #e5484d; }
   .p-main { display: flex; gap: 11px; align-items: center; }
-  .p-art { width: 50px; height: 50px; border-radius: 10px; flex: none;
-    background: linear-gradient(135deg, #e88bb1, #b06ee8 55%, #5a7bf0); }
+  .p-art { width: 50px; height: 50px; border-radius: 10px; flex: none; background: linear-gradient(135deg,#e88bb1,#b06ee8 55%,#5a7bf0); }
   .p-info { flex: 1; }
   .p-t { height: 8px; width: 62%; border-radius: 4px; background: rgba(255,255,255,.9); }
   .p-a { height: 6px; width: 38%; border-radius: 4px; background: rgba(255,255,255,.32); margin-top: 6px; }
@@ -85,94 +73,242 @@
   .p-l { text-align: center; font-size: 10.5px; color: rgba(255,255,255,.66); }
   .p-c { display: flex; justify-content: center; gap: 24px; font-size: 12px; }
 
-  /* ── page ── */
-  .wrap { max-width: 580px; margin: 0 auto; padding: 0 26px; }
-  header { padding-top: 150px; text-align: center; }
-  .hint {
-    font-size: 12.5px; color: var(--dim);
-    margin-bottom: 100px; letter-spacing: .02em;
+  /* ═══ nav pill ═══ */
+  .navwrap { position: fixed; top: 46px; left: 0; right: 0; z-index: 150; display: flex; justify-content: center; pointer-events: none; }
+  nav {
+    pointer-events: auto;
+    display: flex; align-items: center; gap: 20px;
+    background: rgba(255,252,246,.82); backdrop-filter: blur(14px);
+    border: 1px solid rgba(24,19,16,.08);
+    padding: 9px 10px 9px 18px; border-radius: 99px;
+    box-shadow: 0 8px 30px rgba(24,19,16,.08);
   }
-  h1 {
-    font-family: var(--serif-en);
-    font-size: 96px; font-weight: 400; font-style: italic;
-    line-height: 1; letter-spacing: .01em;
+  nav .brand { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 15px; letter-spacing: -.01em; }
+  nav .brand .m { width: 24px; height: 16px; background: var(--ink); border-radius: 0 0 7px 7px; display: flex; align-items: center; justify-content: center; gap: 3.5px; }
+  nav .brand .m i { display: block; width: 2.4px; height: 6.5px; border-radius: 2px; background: var(--cream); animation: blink 4.6s infinite; }
+  nav a.link { font-size: 14px; color: var(--dim); font-weight: 600; }
+  nav a.link:hover { color: var(--ink); }
+  nav a.cta {
+    background: var(--ink); color: var(--cream); font-weight: 700; font-size: 14px;
+    padding: 9px 20px; border-radius: 99px; transition: transform .15s;
   }
-  .tagline {
-    font-family: var(--serif-en);
-    font-style: italic; font-weight: 400;
-    font-size: 21px; color: var(--orange);
-    margin-top: 18px; letter-spacing: .04em;
-  }
-  .lede {
-    margin: 44px auto 0; font-size: 16.5px; max-width: 28em; text-align: left;
-    text-align: center; word-break: keep-all;
-  }
-  .lede em { font-style: normal; color: var(--orange); }
-  .dl { margin-top: 48px; }
-  .dl a.button {
-    display: inline-block;
-    font-family: var(--serif-kr);
-    border: 1px solid var(--ink); border-radius: 999px;
-    font-size: 15.5px; padding: 13px 34px;
-    text-decoration: none; transition: .25s;
-  }
-  .dl a.button:hover { background: var(--ink); color: var(--paper); }
-  .dl p { margin-top: 16px; font-size: 12px; color: var(--dim); font-family: var(--mono); letter-spacing: .03em; }
+  nav a.cta:hover { transform: scale(1.04); }
 
-  section { margin-top: 130px; }
-  .label {
-    text-align: center; font-size: 13px; color: var(--dim); letter-spacing: .3em;
-    margin-bottom: 40px;
-  }
-  .label::before, .label::after { content: "—"; color: var(--line); margin: 0 14px; letter-spacing: 0; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
 
-  .feature { padding: 22px 0; text-align: center; word-break: keep-all; }
-  .feature + .feature { border-top: 1px solid var(--line); }
-  .feature h3 { font-size: 17px; font-weight: 400; color: var(--orange); letter-spacing: .02em; }
-  .feature p { font-size: 15.5px; color: var(--dim); margin-top: 6px; }
+  /* ═══ hero tile ═══ */
+  .hero {
+    margin-top: 120px;
+    background: var(--orange);
+    border-radius: var(--r);
+    padding: 96px 40px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero h1 {
+    font-size: clamp(44px, 7.4vw, 84px);
+    font-weight: 900; letter-spacing: -.04em; line-height: 1.04;
+    color: var(--ink);
+  }
+  .hero .sub {
+    margin-top: 20px; font-size: 18px; font-weight: 600; color: rgba(24,19,16,.72);
+  }
+  .hero .sub em { font-style: italic; font-family: Georgia, serif; }
+  .hero .cta-row { margin: 34px 0 0; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-big {
+    display: inline-block; background: var(--ink); color: var(--cream);
+    font-size: 17px; font-weight: 800; padding: 17px 36px; border-radius: 99px;
+    transition: transform .15s;
+  }
+  .btn-big:hover { transform: scale(1.04) rotate(-1deg); }
+  .hero .meta { margin-top: 16px; font-size: 13px; font-weight: 600; color: rgba(24,19,16,.55); }
 
-  ol.steps { list-style: none; counter-reset: n; max-width: 30em; margin: 0 auto; }
-  ol.steps li {
-    counter-increment: n; padding: 26px 0; font-size: 15.5px; text-align: center; word-break: keep-all;
+  /* floating stickers */
+  .stick {
+    position: absolute; background: var(--cream); border-radius: 18px;
+    padding: 10px 16px; font-size: 13px; font-weight: 700;
+    box-shadow: 0 10px 26px rgba(24,19,16,.16);
+    display: flex; align-items: center; gap: 8px;
   }
-  ol.steps li + li { border-top: 1px solid var(--line); }
-  ol.steps li::before {
-    content: counter(n);
-    display: block; margin: 0 auto 12px;
-    font-family: var(--serif-en); font-style: italic;
-    font-size: 22px; color: var(--orange);
+  .stick .dot { width: 9px; height: 9px; border-radius: 3px; background: #e5484d; }
+  .stick.s1 { left: 6%; top: 118px; transform: rotate(-7deg); animation: floaty 5s ease-in-out infinite; }
+  .stick.s2 { right: 6%; top: 150px; transform: rotate(6deg); animation: floaty 6s ease-in-out infinite reverse; }
+  .stick .weyes { display: flex; gap: 3px; }
+  .stick .weyes i { display: block; width: 2.6px; height: 8px; border-radius: 2px; background: var(--ink); animation: blink 3.8s infinite; }
+  @keyframes floaty { 0%,100% { margin-top: 0; } 50% { margin-top: -10px; } }
+
+  /* hero screen mock */
+  .heroscreen {
+    margin: 64px auto 0; max-width: 780px; height: 300px;
+    background: #101017;
+    border-radius: 26px 26px 0 0;
+    border: 1px solid rgba(255,255,255,.12); border-bottom: none;
+    position: relative; overflow: hidden;
+    background:
+      radial-gradient(120% 100% at 15% 115%, #33224a 0%, transparent 60%),
+      radial-gradient(120% 100% at 88% 105%, #16324a 0%, transparent 55%),
+      #101017;
   }
-  ol.steps li .d { color: var(--dim); }
+  .heroscreen .bar {
+    height: 30px; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16px; font-size: 11px; color: rgba(255,255,255,.4);
+    background: rgba(255,255,255,.05);
+  }
+  .mocknotch {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 380px; height: 158px; background: #000; border-radius: 0 0 24px 24px;
+    padding: 38px 22px 0;
+    display: flex; flex-direction: column; gap: 9px; color: #fff;
+  }
+  .mocknotch .lyricbar {
+    position: absolute; left: 50%; transform: translateX(-50%); bottom: -46px;
+    background: #000; border: 1px solid rgba(255,255,255,.14);
+    border-radius: 99px; padding: 7px 18px; font-size: 11px; color: rgba(255,255,255,.85);
+    white-space: nowrap;
+  }
+
+  /* ═══ marquee ═══ */
+  .marquee {
+    margin: 26px 0; overflow: hidden; white-space: nowrap;
+    font-weight: 900; font-size: 20px; letter-spacing: .02em;
+    color: var(--ink);
+  }
+  .marquee .inner { display: inline-block; animation: marq 22s linear infinite; }
+  .marquee span { margin: 0 18px; }
+  .marquee .o { color: var(--orange-deep); }
+  @keyframes marq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ═══ bento ═══ */
+  .bento { display: grid; gap: 16px; grid-template-columns: repeat(2, 1fr); }
+  .tile {
+    border-radius: var(--r); padding: 40px 36px;
+    position: relative; overflow: hidden;
+    min-height: 300px;
+    display: flex; flex-direction: column;
+  }
+  .tile h2 { font-size: 30px; font-weight: 900; letter-spacing: -.03em; line-height: 1.15; }
+  .tile p { margin-top: 10px; font-size: 15.5px; font-weight: 500; color: rgba(24,19,16,.66); max-width: 30em; }
+  .tile .art { margin-top: auto; padding-top: 30px; display: flex; justify-content: center; }
+  .tile.wide { grid-column: span 2; }
+  .t-music { background: var(--lilac); }
+  .t-lyric { background: var(--mint); }
+  .t-cal { background: var(--butter); }
+  .t-hud { background: #f0b8a4; }
+  .t-claude { background: var(--ink); color: var(--cream); }
+  .t-claude p { color: rgba(247,239,228,.65); }
+  .t-eyes { background: #efe4d2; }
+
+  /* mini notch mocks inside tiles */
+  .mini {
+    background: #0a0a0a; border-radius: 0 0 14px 14px; height: 40px; width: 250px;
+    position: relative; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 14px;
+    box-shadow: 0 14px 30px rgba(24,19,16,.22);
+  }
+  .mini .a { width: 24px; height: 24px; border-radius: 6px; background: linear-gradient(135deg,#e88bb1,#b06ee8 60%,#5a7bf0); }
+  .mini .weq { display: flex; gap: 3px; align-items: center; }
+  .mini .weq i { width: 3px; border-radius: 2px; background: var(--orange); animation: eq 1s ease-in-out infinite alternate; }
+  .mini .weq i:nth-child(1) { height: 11px; } .mini .weq i:nth-child(2) { height: 17px; animation-delay: .15s; }
+  .mini .weq i:nth-child(3) { height: 8px; animation-delay: .3s; } .mini .weq i:nth-child(4) { height: 13px; animation-delay: .45s; }
+  .lyr {
+    margin-top: 14px; background: #0a0a0a; color: #fff; border-radius: 99px;
+    padding: 9px 22px; font-size: 13px; overflow: hidden; height: 38px;
+    box-shadow: 0 14px 30px rgba(24,19,16,.22);
+    display: flex; align-items: center;
+  }
+  .lyr .roll { display: flex; flex-direction: column; height: 20px; overflow: hidden; }
+  .lyr .roll div { height: 20px; line-height: 20px; animation: roll 6s infinite; }
+  @keyframes roll {
+    0%, 28% { transform: translateY(0); }
+    33%, 61% { transform: translateY(-20px); }
+    66%, 94% { transform: translateY(-40px); }
+    100% { transform: translateY(-60px); }
+  }
+  .calrow {
+    background: #0a0a0a; color: #fff; border-radius: 16px; padding: 14px 20px;
+    display: flex; align-items: center; gap: 10px; font-size: 13.5px;
+    box-shadow: 0 14px 30px rgba(24,19,16,.22);
+  }
+  .calrow b { width: 12px; height: 12px; border-radius: 4px; background: #e5484d; }
+  .calrow .dim2 { color: rgba(255,255,255,.5); }
+  .hudmock {
+    background: #0a0a0a; border-radius: 0 0 16px 16px; height: 44px; width: 320px;
+    display: flex; align-items: center; justify-content: space-between; padding: 0 18px;
+    box-shadow: 0 14px 30px rgba(24,19,16,.22);
+    animation: stretch 3.2s ease-in-out infinite;
+  }
+  @keyframes stretch { 0%,100% { width: 240px; } 45%,75% { width: 330px; } }
+  .hudmock .spk { color: #fff; font-size: 13px; }
+  .hudmock .vbar { width: 90px; height: 4px; border-radius: 3px; background: rgba(255,255,255,.22); position: relative; overflow: hidden; }
+  .hudmock .vbar::after { content: ""; position: absolute; inset: 0; width: 62%; border-radius: 3px; background: #fff; }
+  .claudebanner {
+    background: var(--orange); color: var(--ink); border-radius: 0 0 18px 18px;
+    padding: 12px 22px; display: flex; align-items: center; gap: 10px;
+    font-size: 14px; font-weight: 700;
+    box-shadow: 0 14px 34px rgba(233,130,91,.35);
+  }
+  .claudebanner .buddy { width: 24px; height: 16px; background: var(--ink); border-radius: 5px; display: flex; align-items: center; justify-content: center; gap: 3.5px; }
+  .claudebanner .buddy i { display: block; width: 2.6px; height: 7px; border-radius: 2px; background: var(--orange); animation: blink 3.4s infinite; }
+  .claudebanner .r { margin-left: 14px; font-size: 12px; font-weight: 600; color: rgba(24,19,16,.6); }
+  .bigeyes { display: flex; gap: 14px; align-items: center; justify-content: center; padding: 18px 0 8px; }
+  .bigeyes i { display: block; width: 13px; height: 40px; border-radius: 8px; background: var(--ink); animation: blink 4s infinite; }
+
+  /* ═══ install strip ═══ */
+  .install {
+    margin-top: 16px; background: #fffcf6; border: 1px solid rgba(24,19,16,.08);
+    border-radius: var(--r); padding: 48px 40px;
+  }
+  .install h2 { font-size: 30px; font-weight: 900; letter-spacing: -.03em; text-align: center; }
+  .install .cols { margin-top: 34px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .install .col { text-align: center; }
+  .install .n {
+    width: 40px; height: 40px; margin: 0 auto 14px; border-radius: 14px;
+    background: var(--orange); color: var(--ink); font-weight: 900; font-size: 17px;
+    display: flex; align-items: center; justify-content: center;
+    transform: rotate(-4deg);
+  }
+  .install .col:nth-child(2) .n { transform: rotate(3deg); background: var(--lilac); }
+  .install .col:nth-child(3) .n { transform: rotate(-2deg); background: var(--mint); }
+  .install h3 { font-size: 16.5px; font-weight: 800; }
+  .install p { margin-top: 6px; font-size: 14px; color: var(--dim); font-weight: 500; word-break: keep-all; }
   code {
-    font-family: var(--mono); font-size: 12.5px;
-    background: #ebe7d9; padding: 2.5px 8px; border-radius: 6px;
-  }
-  pre {
-    margin: 26px auto 0; max-width: 34em;
-    background: #131311; color: #cfcabb;
-    border-radius: 16px; padding: 20px 24px; overflow-x: auto;
-    font-family: var(--mono); font-size: 12.5px; line-height: 1.7;
-    text-align: left;
-  }
-  pre b { color: #de9873; font-weight: 400; }
-  section > p.note {
-    text-align: center; font-size: 15.5px; color: var(--dim);
-    max-width: 30em; margin: 0 auto; word-break: keep-all;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px;
+    background: #f1ead9; padding: 2.5px 8px; border-radius: 7px;
   }
 
-  footer {
-    margin-top: 140px; padding: 44px 0 80px;
-    text-align: center; font-size: 13px; color: var(--dim);
+  /* ═══ claude code strip ═══ */
+  .hookbox {
+    margin-top: 16px; background: var(--ink); color: var(--cream);
+    border-radius: var(--r); padding: 48px 40px;
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 36px; align-items: center;
   }
-  footer .feyes { display: flex; justify-content: center; gap: 4px; margin-bottom: 18px; }
-  footer .feyes i { display: block; width: 2.8px; height: 9px; border-radius: 2px; background: var(--ink); opacity: .75; animation: blink 5.2s infinite; }
-  footer nav { margin-top: 6px; }
-  footer a { color: var(--dim); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 1px; }
-  footer a:hover { color: var(--ink); }
-  footer .sep { margin: 0 10px; color: var(--line); }
+  .hookbox h2 { font-size: 30px; font-weight: 900; letter-spacing: -.03em; line-height: 1.2; }
+  .hookbox p { margin-top: 12px; font-size: 15px; color: rgba(247,239,228,.6); font-weight: 500; }
+  .hookbox code { background: rgba(255,255,255,.12); color: #f3b797; }
+  .hookbox pre {
+    background: #060606; border-radius: 20px; padding: 20px 22px; overflow-x: auto;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12.5px; line-height: 1.65;
+    color: #b9b2a4; border: 1px solid rgba(255,255,255,.08);
+  }
+  .hookbox pre b { color: #f3a37c; font-weight: 400; }
 
-  @media (max-width: 560px) {
-    h1 { font-size: 68px; }
+  /* ═══ outro ═══ */
+  .outro { text-align: center; padding: 110px 20px 60px; }
+  .outro .bigeyes i { background: var(--ink); }
+  .outro h2 { font-size: clamp(34px, 5vw, 52px); font-weight: 900; letter-spacing: -.035em; margin-top: 22px; }
+  .outro .cta-row { margin-top: 30px; }
+  footer { padding: 20px 0 56px; text-align: center; font-size: 13px; color: var(--dim); font-weight: 600; }
+  footer a { border-bottom: 1.5px solid rgba(24,19,16,.15); padding-bottom: 1px; }
+  footer .sep { margin: 0 10px; opacity: .4; }
+
+  @media (max-width: 760px) {
+    .bento { grid-template-columns: 1fr; }
+    .tile.wide { grid-column: span 1; }
+    .install .cols { grid-template-columns: 1fr; }
+    .hookbox { grid-template-columns: 1fr; }
+    .stick { display: none; }
+    nav a.link { display: none; }
     .notch { width: 150px; height: 28px; }
     .notch:hover { width: 340px; }
   }
@@ -194,60 +330,126 @@
   </div>
 </div>
 
+<div class="navwrap">
+  <nav>
+    <a class="brand" href="#"><span class="m"><i></i><i></i></span>Cove</a>
+    <a class="link" href="https://github.com/y9260000/cove-releases" target="_blank">GitHub</a>
+    <a class="cta" href="https://github.com/y9260000/cove-releases/releases/latest">다운로드</a>
+  </nav>
+</div>
+
 <div class="wrap">
-  <header>
-    <p class="hint">이 노치, 눌러보진 말고 가만히 올려보세요</p>
-    <h1>Cove</h1>
-    <p class="tagline">my little notch cove</p>
-    <p class="lede">
-      하루 종일 자리만 차지하던 맥 노치에서
-      <em>지금 재생 중인 음악</em>이 보이고, <em>가사</em>가 따라 흐르고,
-      <em>다음 일정</em>이 기다리고, <em>Claude</em>가 다 됐다고 알려줍니다.
-    </p>
-    <div class="dl">
-      <a class="button" href="https://github.com/y9260000/cove-releases/releases/latest">Cove 내려받기</a>
-      <p>v0.2.2 · macOS 14.4+ · Apple Silicon · 무료</p>
+  <section class="hero">
+    <div class="stick s1"><span class="weyes"><i></i><i></i></span>깜빡</div>
+    <div class="stick s2"><span class="dot"></span>14:00 디자인 리뷰</div>
+    <h1>노치, 그냥<br>두기 아깝잖아요</h1>
+    <p class="sub">음악 · 가사 · 일정 · 알림이 사는 <em>my little notch cove</em></p>
+    <div class="cta-row">
+      <a class="btn-big" href="https://github.com/y9260000/cove-releases/releases/latest">무료로 받기</a>
     </div>
-  </header>
+    <p class="meta">macOS 14.4+ · Apple Silicon · 위에 붙어있는 노치를 올려보세요 ↑</p>
 
-  <section>
-    <p class="label">무엇을 하나요</p>
-    <div class="feature"><h3>지금 재생 중</h3><p>유튜브 뮤직, Spotify, 사파리 탭 — 시스템에 재생을 알리는 모든 앱. 앨범아트와 시크 슬라이더, 앨범 색을 따라가는 이퀄라이저.</p></div>
-    <div class="feature"><h3>싱크 가사</h3><p>노래방처럼 지금 부르는 줄이 따라옵니다. 노치 아래 작은 가사 바로 띄워둘 수도 있어요.</p></div>
-    <div class="feature"><h3>다음 일정</h3><p>노치를 펼치면 다음 일정이 한 줄로. 시작 10분 전엔 조용히 배너로 알려줍니다.</p></div>
-    <div class="feature"><h3>볼륨 · 밝기 · 에어팟 · 충전</h3><p>조절하는 순간 노치가 옆으로 부풀며 보여주고, 끝나면 스르륵 돌아갑니다.</p></div>
-    <div class="feature"><h3>Claude Code</h3><p>답변이 끝나면 노치에서 클로드가 알려줘요. 클릭하면 그 창으로, 세션 잔량도 함께.</p></div>
-    <div class="feature"><h3>그리고</h3><p>음악이 없을 땐 눈만 깜빡이며 기다립니다. 맥이 바쁠수록 눈도 바빠져요.</p></div>
+    <div class="heroscreen">
+      <div class="bar"><span>&#63743;&ensp;Cove&ensp;파일&ensp;편집</span><span>배터리 100% · 수 9:41</span></div>
+      <div class="mocknotch">
+        <div class="p-cal"><b></b>14:00&ensp;디자인 리뷰</div>
+        <div class="p-main">
+          <div class="p-art"></div>
+          <div class="p-info"><div class="p-t"></div><div class="p-a"></div><div class="p-b" style="overflow:hidden"><i style="position:absolute;inset:0;width:44%;background:#fff;border-radius:2px"></i></div></div>
+        </div>
+        <div class="p-c" style="margin-top:2px"><span>◂◂</span><span>❚❚</span><span>▸▸</span></div>
+        <div class="lyricbar">不思議な引力に 逆らえず崩れてく ♪</div>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <p class="label">설치</p>
-    <ol class="steps">
-      <li>Cove.dmg를 받아 Applications로 옮깁니다.</li>
-      <li>첫 실행 때 경고가 뜹니다. 아직 애플 공증 서명이 없어서 그래요.<br>
-        <span class="d">시스템 설정 → 개인정보 보호 및 보안 → "그래도 열기"</span><br>
-        <span class="d">또는</span> <code>xattr -cr /Applications/Cove.app</code></li>
-      <li>메뉴바의 노치 아이콘 → 설정에서 로그인 시 자동 시작을 켜두면 끝.<br><span class="d">캘린더 권한은 일정 표시용이에요.</span></li>
-    </ol>
-  </section>
+  <div class="marquee"><div class="inner">
+    <span>MUSIC</span><span class="o">✦</span><span>LYRICS</span><span class="o">✦</span><span>CALENDAR</span><span class="o">✦</span><span>VOLUME</span><span class="o">✦</span><span>AIRPODS</span><span class="o">✦</span><span>CLAUDE</span><span class="o">✦</span>
+    <span>MUSIC</span><span class="o">✦</span><span>LYRICS</span><span class="o">✦</span><span>CALENDAR</span><span class="o">✦</span><span>VOLUME</span><span class="o">✦</span><span>AIRPODS</span><span class="o">✦</span><span>CLAUDE</span><span class="o">✦</span>
+  </div></div>
 
-  <section>
-    <p class="label">Claude Code와 함께</p>
-    <p class="note">Stop 훅 한 줄이면 응답이 끝날 때마다 노치가 알려줍니다.<br>아무 스크립트에서나 <code>Cove notify "메시지"</code>도 됩니다.</p>
+  <div class="bento">
+    <div class="tile t-music">
+      <h2>지금 뭐 듣는지,<br>노치가 알아요</h2>
+      <p>유튜브 뮤직, Spotify, 사파리 탭까지 — 시스템에 재생을 알리는 모든 앱. 이퀄라이저는 앨범 색을 따라가요.</p>
+      <div class="art"><div class="mini"><div class="a"></div><div class="weq"><i></i><i></i><i></i><i></i></div></div></div>
+    </div>
+    <div class="tile t-lyric">
+      <h2>가사는<br>노래방처럼</h2>
+      <p>지금 부르는 줄이 굴러가며 따라옵니다. 노치 아래 가사 바로 띄워둘 수도 있어요.</p>
+      <div class="art"><div class="lyr"><div class="roll">
+        <div>지금 부르는 가사가</div>
+        <div>한 줄씩 굴러가면서</div>
+        <div>노치 아래 따라와요 ♪</div>
+        <div>지금 부르는 가사가</div>
+      </div></div></div>
+    </div>
+    <div class="tile t-cal">
+      <h2>다음 일정도<br>한 줄로</h2>
+      <p>노치를 펼치면 다음 일정이 기다려요. 시작 10분 전엔 조용히 배너로. 구글 캘린더는 맥 캘린더 연동으로.</p>
+      <div class="art"><div class="calrow"><b></b>내일 00:00 <span class="dim2">[패키지 마감] 마포현대 시연</span></div></div>
+    </div>
+    <div class="tile t-hud">
+      <h2>볼륨을 올리면<br>노치가 부풀어요</h2>
+      <p>볼륨 · 밝기 · 에어팟 연결 · 충전까지, 다이나믹 아일랜드처럼 벌어졌다 스르륵 돌아갑니다.</p>
+      <div class="art"><div class="hudmock"><svg class="spk" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="#fff" stroke="none"/><path d="M15.5 8.5a5 5 0 010 7"/><path d="M18.5 5.5a9 9 0 010 13"/></svg><div class="vbar"></div></div></div>
+    </div>
+    <div class="tile t-claude wide">
+      <h2>Claude Code가 끝나면, 노치가 알려줘요</h2>
+      <p>답변이 끝나면 클로드가 빼꼼. 클릭하면 그 창으로 바로 이동하고, 세션 잔량도 함께 보여줍니다.</p>
+      <div class="art"><div class="claudebanner"><span class="buddy"><i></i><i></i></span>답변 완료<span class="r">초기화 3시간 41분 남음</span></div></div>
+    </div>
+    <div class="tile t-eyes wide">
+      <h2 style="text-align:center">음악이 없을 땐, 그냥 같이 있어요</h2>
+      <p style="text-align:center;margin-left:auto;margin-right:auto">눈만 깜빡이며 기다립니다. 맥이 바쁠수록 눈도 바빠지는 건 비밀.</p>
+      <div class="art"><div class="bigeyes"><i></i><i></i></div></div>
+    </div>
+  </div>
+
+  <div class="install">
+    <h2>설치는 3분이면 돼요</h2>
+    <div class="cols">
+      <div class="col">
+        <div class="n">1</div>
+        <h3>받아서 드래그</h3>
+        <p>Cove.dmg를 열고 Applications로 옮기세요.</p>
+      </div>
+      <div class="col">
+        <div class="n">2</div>
+        <h3>첫 실행 허용</h3>
+        <p>시스템 설정 → 개인정보 보호 및 보안 → "그래도 열기"<br>또는 <code>xattr -cr /Applications/Cove.app</code></p>
+      </div>
+      <div class="col">
+        <div class="n">3</div>
+        <h3>자동 시작 켜기</h3>
+        <p>메뉴바 노치 아이콘 → 설정에서 로그인 시 자동 시작. 끝!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="hookbox">
+    <div>
+      <h2>Claude Code와<br>함께 쓰세요</h2>
+      <p>Stop 훅 한 줄이면 응답이 끝날 때마다 노치가 알려줍니다. 아무 스크립트에서나 <code>Cove notify "메시지"</code>도 됩니다.</p>
+    </div>
 <pre>{
   "hooks": {
     "Stop": [{ "hooks": [{
       "type": "command",
-      "command": "<b>/Applications/Cove.app/Contents/MacOS/Cove notify \"답변 완료\"</b> 2>/dev/null || true"
+      "command": "<b>/Applications/Cove.app/…/Cove notify \"답변 완료\"</b>"
     }] }]
   }
 }</pre>
-  </section>
+  </div>
+
+  <div class="outro">
+    <div class="bigeyes"><i></i><i></i></div>
+    <h2>노치에 작은 친구를<br>들여보세요</h2>
+    <div class="cta-row"><a class="btn-big" href="https://github.com/y9260000/cove-releases/releases/latest">Cove 무료로 받기</a></div>
+  </div>
 
   <footer>
-    <div class="feyes"><i></i><i></i></div>
-    <p>my little notch cove</p>
-    <nav><a href="https://github.com/y9260000/cove-releases">GitHub</a><span class="sep">·</span><a href="https://github.com/y9260000/cove-releases/issues">버그 제보</a></nav>
+    my little notch cove<span class="sep">·</span><a href="https://github.com/y9260000/cove-releases">GitHub</a><span class="sep">·</span><a href="https://github.com/y9260000/cove-releases/issues">버그 제보</a>
   </footer>
 </div>
 
