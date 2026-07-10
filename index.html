@@ -78,32 +78,33 @@
   .p-l { text-align: center; font-size: 10.5px; color: rgba(255,255,255,.66); }
   .p-c { display: flex; justify-content: center; gap: 24px; font-size: 12px; }
 
-  /* ═══ nav pill ═══ */
-  .navwrap { position: fixed; top: 46px; left: 0; right: 0; z-index: 150; display: flex; justify-content: center; pointer-events: none; }
-  nav {
-    pointer-events: auto;
-    display: flex; align-items: center; gap: 20px;
-    background: rgba(255,252,246,.82); backdrop-filter: blur(14px);
-    border: 1px solid rgba(24,19,16,.08);
-    padding: 9px 10px 9px 18px; border-radius: 99px;
-    box-shadow: 0 8px 30px rgba(24,19,16,.08);
+  /* ═══ menubar nav (the notch lives in it) ═══ */
+  .menubar-nav {
+    position: fixed; top: 0; left: 0; right: 0; height: 38px; z-index: 150;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 20px;
+    background: rgba(247,239,228,.78); backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(24,19,16,.08);
+    font-size: 13.5px;
   }
-  nav .brand { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; }
-  nav .brand .m { width: 24px; height: 16px; background: var(--ink); border-radius: 0 0 7px 7px; display: flex; align-items: center; justify-content: center; gap: 3.5px; }
-  nav .brand .m i { display: block; width: 2.4px; height: 6.5px; border-radius: 2px; background: var(--cream); animation: blink 4.6s infinite; }
-  nav a.link { font-size: 14px; color: var(--dim); font-weight: 600; }
-  nav a.link:hover { color: var(--ink); }
-  nav a.cta {
-    background: var(--ink); color: var(--cream); font-weight: 550; font-size: 14px;
-    padding: 9px 20px; border-radius: 99px; transition: transform .15s;
+  .menubar-nav .left, .menubar-nav .right { display: flex; align-items: center; gap: 18px; }
+  .menubar-nav .brand { display: flex; align-items: center; gap: 7px; font-weight: 650; }
+  .menubar-nav .apple { font-size: 14px; margin-right: 2px; }
+  .menubar-nav .faux { color: rgba(24,19,16,.35); font-weight: 500; cursor: default; }
+  .menubar-nav a.link { color: var(--dim); font-weight: 600; }
+  .menubar-nav a.link:hover { color: var(--ink); }
+  .menubar-nav a.cta {
+    background: var(--ink); color: var(--cream); font-weight: 600; font-size: 12.5px;
+    padding: 5px 14px; border-radius: 99px; transition: transform .15s;
   }
-  nav a.cta:hover { transform: scale(1.04); }
+  .menubar-nav a.cta:hover { transform: scale(1.05); }
+  .menubar-nav time { color: var(--dim); font-weight: 500; font-variant-numeric: tabular-nums; }
 
   .wrap { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
 
   /* ═══ hero tile ═══ */
   .hero {
-    margin-top: 120px;
+    margin-top: 104px;
     background: var(--orange);
     border-radius: var(--r);
     padding: 96px 40px 0;
@@ -320,7 +321,7 @@
     .install .cols { grid-template-columns: 1fr; }
     .hookbox { grid-template-columns: 1fr; }
     .stick { display: none; }
-    nav a.link { display: none; }
+    .menubar-nav .faux, .menubar-nav time { display: none; }
     .notch { width: 150px; height: 28px; }
     .notch:hover { width: 340px; }
   }
@@ -427,12 +428,19 @@
   </div>
 </div>
 
-<div class="navwrap">
-  <nav>
-    <a class="brand" href="#"><span class="m"><i></i><i></i></span>Cove</a>
+<div class="menubar-nav">
+  <div class="left">
+    <span class="apple">&#63743;</span>
+    <span class="brand">Cove</span>
+    <span class="faux">파일</span>
+    <span class="faux">편집</span>
+    <span class="faux">보기</span>
+  </div>
+  <div class="right">
     <a class="link" href="https://github.com/y9260000/cove-releases" target="_blank">GitHub</a>
     <a class="cta" href="https://github.com/y9260000/cove-releases/releases/latest">다운로드</a>
-  </nav>
+    <time>수 9:41</time>
+  </div>
 </div>
 
 <div class="wrap">
