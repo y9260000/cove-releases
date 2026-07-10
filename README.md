@@ -28,15 +28,18 @@
 
 ### Claude Code 연동 (선택)
 
-`~/.claude/settings.json`에 Stop 훅을 추가하면 Claude가 응답을 마칠 때마다 노치에 알림이 떠요:
+`~/.claude/settings.json`에 훅을 추가하면 Claude가 응답을 마칠 때(`Stop`), 그리고 질문이나 권한 허락을 기다릴 때(`Notification`) 노치에 알림이 떠요:
 
 ```json
 {
   "hooks": {
-    "Stop": [{ "hooks": [{ "type": "command", "command": "/Applications/Cove.app/Contents/MacOS/Cove notify \"답변 완료\" 2>/dev/null || true", "timeout": 10 }] }]
+    "Stop": [{ "hooks": [{ "type": "command", "command": "/Applications/Cove.app/Contents/MacOS/Cove notify \"답변 완료\" 2>/dev/null || true", "timeout": 10 }] }],
+    "Notification": [{ "hooks": [{ "type": "command", "command": "/Applications/Cove.app/Contents/MacOS/Cove notify --question \"확인이 필요해요\" 2>/dev/null || true", "timeout": 10 }] }]
   }
 }
 ```
+
+`--question`을 붙이면 클로드 캐릭터 대신 도트 물음표 아이콘이 나와요 (v0.2.5+).
 
 아무 스크립트에서나 쓸 수도 있어요: `/Applications/Cove.app/Contents/MacOS/Cove notify "빌드 끝!"`
 

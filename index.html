@@ -531,13 +531,17 @@
   <div class="hookbox">
     <div>
       <h2>Claude Code와<br>함께 쓰세요</h2>
-      <p>Stop 훅 한 줄이면 응답이 끝날 때마다 노치가 알려줍니다. 아무 스크립트에서나 <code>Cove notify "메시지"</code>도 됩니다.</p>
+      <p>훅 두 줄이면 응답이 끝날 때, 그리고 Claude가 질문이나 권한 허락을 기다릴 때 노치가 알려줍니다. 아무 스크립트에서나 <code>Cove notify "메시지"</code>도 됩니다.</p>
     </div>
 <pre>{
   "hooks": {
     "Stop": [{ "hooks": [{
       "type": "command",
       "command": "<b>/Applications/Cove.app/…/Cove notify \"답변 완료\"</b>"
+    }] }],
+    "Notification": [{ "hooks": [{
+      "type": "command",
+      "command": "<b>/Applications/Cove.app/…/Cove notify --question \"확인이 필요해요\"</b>"
     }] }]
   }
 }</pre>
