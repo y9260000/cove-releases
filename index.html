@@ -96,6 +96,7 @@
   .menubar-nav .faux { color: rgba(24,19,16,.35); font-weight: 500; cursor: default; }
   .menubar-nav a.link { color: var(--dim); font-weight: 600; }
   .menubar-nav a.link:hover { color: var(--ink); }
+  .menubar-nav a.langbtn { font-weight: 650; font-size: 13px; letter-spacing: .02em; }
   .menubar-nav a.cta {
     background: var(--ink); color: var(--cream); font-weight: 600; font-size: 12.5px;
     padding: 5px 14px; border-radius: 99px; transition: transform .15s;
@@ -436,12 +437,12 @@
   <div class="wave"><i></i><i></i><i></i><i></i></div>
   <div class="eyes"><i></i><i></i></div>
   <div class="player">
-    <div class="p-cal"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="4.5" fill="#e5484d"/><rect x="3" y="4.5" width="18" height="6" rx="3" fill="#b93338"/><rect x="7" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="14.4" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="7" y="13" width="4" height="4" rx="1.2" fill="#ffd9d9"/></svg>19:00&ensp;저녁 약속</div>
+    <div class="p-cal"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="4.5" fill="#e5484d"/><rect x="3" y="4.5" width="18" height="6" rx="3" fill="#b93338"/><rect x="7" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="14.4" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="7" y="13" width="4" height="4" rx="1.2" fill="#ffd9d9"/></svg><span data-i18n="dinner2">19:00&ensp;저녁 약속</span></div>
     <div class="p-main">
       <div class="p-art"></div>
       <div class="p-info"><div class="p-t"></div><div class="p-a"></div><div class="p-b"></div></div>
     </div>
-    <div class="p-l">지금 나오는 가사가 여기 따라와요</div>
+    <div class="p-l" data-i18n="pl">지금 나오는 가사가 여기 따라와요</div>
     <div class="p-c"><svg class="ci" viewBox="0 0 24 24" fill="currentColor"><path d="M12.5 6.5v11L4.5 12zM21.5 6.5v11l-8-5.5z"/></svg><svg class="ci big" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4.2" height="14" rx="1.6"/><rect x="13.8" y="5" width="4.2" height="14" rx="1.6"/></svg><svg class="ci" viewBox="0 0 24 24" fill="currentColor"><path d="M11.5 6.5v11l8-5.5zM2.5 6.5v11l8-5.5z"/></svg></div>
   </div>
 </div>
@@ -450,31 +451,32 @@
   <div class="left">
     <span class="apple">&#63743;</span>
     <span class="brand">Cove</span>
-    <span class="faux">파일</span>
-    <span class="faux">편집</span>
-    <span class="faux">보기</span>
+    <span class="faux" data-i18n="m1">파일</span>
+    <span class="faux" data-i18n="m2">편집</span>
+    <span class="faux" data-i18n="m3">보기</span>
   </div>
   <div class="right">
     <a class="link" href="https://github.com/y9260000/cove-releases" target="_blank">GitHub</a>
-    <a class="cta" href="https://github.com/y9260000/cove-releases/releases/latest">다운로드</a>
-    <time>수 9:41</time>
+    <a class="cta" href="https://github.com/y9260000/cove-releases/releases/latest" data-i18n="dl">다운로드</a>
+    <a class="link langbtn" href="javascript:void(0)" onclick="toggleLang()">EN</a>
+    <time data-i18n="clock">수 9:41</time>
   </div>
 </div>
 
 <div class="wrap">
   <section class="hero">
-    <div class="stick s1"><span class="weyes"><i></i><i></i></span>깜빡</div>
-    <div class="stick s2"><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="4.5" fill="#e5484d"/><rect x="3" y="4.5" width="18" height="6" rx="3" fill="#b93338"/><rect x="7" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="14.4" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="7" y="13" width="4" height="4" rx="1.2" fill="#ffd9d9"/></svg>19:00 저녁 약속</div>
+    <div class="stick s1"><span class="weyes"><i></i><i></i></span><span data-i18n="blink">깜빡</span></div>
+    <div class="stick s2"><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="4.5" fill="#e5484d"/><rect x="3" y="4.5" width="18" height="6" rx="3" fill="#b93338"/><rect x="7" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="14.4" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="7" y="13" width="4" height="4" rx="1.2" fill="#ffd9d9"/></svg><span data-i18n="dinner">19:00 저녁 약속</span></div>
     <img class="appicon" src="icon-512.png" alt="Cove 앱 아이콘" width="112" height="112">
-    <h1>노치, 그냥<br>두기 아깝잖아요</h1>
-    <p class="sub">음악 · 가사 · 일정 · 알림이 사는 <em>my little notch cove</em></p>
+    <h1 data-i18n="h1">노치, 그냥<br>두기 아깝잖아요</h1>
+    <p class="sub" data-i18n="sub">음악 · 가사 · 일정 · 알림이 사는 <em>my little notch cove</em></p>
     <div class="cta-row">
-      <a class="btn-big" href="https://github.com/y9260000/cove-releases/releases/latest">무료로 받기</a>
+      <a class="btn-big" href="https://github.com/y9260000/cove-releases/releases/latest" data-i18n="get">무료로 받기</a>
     </div>
-    <p class="meta">macOS 14.4+ · Apple Silicon · 위에 붙어있는 노치를 올려보세요 ↑</p>
+    <p class="meta" data-i18n="meta">macOS 14.4+ · Apple Silicon · 위에 붙어있는 노치를 올려보세요 ↑</p>
 
     <div class="heroscreen">
-      <div class="bar"><span class="g">&#63743;&ensp;Cove&ensp;파일&ensp;편집</span><span class="g"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2.5 9.5a14 14 0 0119 0M6 13.5a9 9 0 0112 0M9.5 17.2a4.4 4.4 0 015 0"/><circle cx="12" cy="20" r="1.4" fill="currentColor" stroke="none"/></svg><svg width="16" height="10" viewBox="0 0 30 16"><rect x="1" y="1" width="24" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".5"/><rect x="3.4" y="3.4" width="16" height="9.2" rx="2.4" fill="currentColor"/><rect x="26.6" y="5" width="2.6" height="6" rx="1.3" fill="currentColor" opacity=".5"/></svg><span>수 9:41</span></span></div>
+      <div class="bar"><span class="g">&#63743;&ensp;Cove&ensp;<span data-i18n="m1b">파일</span>&ensp;<span data-i18n="m2b">편집</span></span><span class="g"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2.5 9.5a14 14 0 0119 0M6 13.5a9 9 0 0112 0M9.5 17.2a4.4 4.4 0 015 0"/><circle cx="12" cy="20" r="1.4" fill="currentColor" stroke="none"/></svg><svg width="16" height="10" viewBox="0 0 30 16"><rect x="1" y="1" width="24" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".5"/><rect x="3.4" y="3.4" width="16" height="9.2" rx="2.4" fill="currentColor"/><rect x="26.6" y="5" width="2.6" height="6" rx="1.3" fill="currentColor" opacity=".5"/></svg><span data-i18n="clock2">수 9:41</span></span></div>
       <div class="mocknotch">
         <div class="p-cal"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="4.5" fill="#e5484d"/><rect x="3" y="4.5" width="18" height="6" rx="3" fill="#b93338"/><rect x="7" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="14.4" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="7" y="13" width="4" height="4" rx="1.2" fill="#ffd9d9"/></svg>19:00&ensp;저녁 약속</div>
         <div class="p-main">
@@ -482,7 +484,7 @@
           <div class="p-info"><div class="p-t"></div><div class="p-a"></div><div class="p-b" style="overflow:hidden"><i style="position:absolute;inset:0;width:44%;background:#fff;border-radius:2px"></i></div><div class="p-time"><span>1:24</span><span>3:53</span></div></div>
         </div>
         <div class="p-c" style="margin-top:2px"><svg class="ci" viewBox="0 0 24 24" fill="currentColor"><path d="M12.5 6.5v11L4.5 12zM21.5 6.5v11l-8-5.5z"/></svg><svg class="ci big" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4.2" height="14" rx="1.6"/><rect x="13.8" y="5" width="4.2" height="14" rx="1.6"/></svg><svg class="ci" viewBox="0 0 24 24" fill="currentColor"><path d="M11.5 6.5v11l8-5.5zM2.5 6.5v11l8-5.5z"/></svg></div>
-        <div class="lyricbar">너와 걷던 그 밤, 별이 쏟아지던 길 ♪</div>
+        <div class="lyricbar" data-i18n="lyb">너와 걷던 그 밤, 별이 쏟아지던 길 ♪</div>
       </div>
     </div>
   </section>
@@ -494,67 +496,67 @@
 
   <div class="bento">
     <div class="tile t-music">
-      <h2>지금 뭐 듣는지,<br>노치가 알아요</h2>
-      <p>유튜브 뮤직, Spotify, 사파리 탭까지 — 시스템에 재생을 알리는 모든 앱. 이퀄라이저는 앨범 색을 따라가요.</p>
+      <h2 data-i18n="t1h">지금 뭐 듣는지,<br>노치가 알아요</h2>
+      <p data-i18n="t1p">유튜브 뮤직, Spotify, 사파리 탭까지 — 시스템에 재생을 알리는 모든 앱. 이퀄라이저는 앨범 색을 따라가요.</p>
       <div class="art"><div class="screenlet" style="--w1:#472b52;--w2:#1d3550"><div class="sbar"><i></i><i></i></div><div class="snotch collapsed"><div class="art"></div><div class="weq"><i></i><i></i><i></i><i></i></div></div></div></div>
     </div>
     <div class="tile t-lyric">
-      <h2>가사는<br>노래방처럼</h2>
-      <p>지금 부르는 줄이 굴러가며 따라옵니다. 노치 아래 가사 바로 띄워둘 수도 있어요.</p>
-      <div class="art"><div class="screenlet" style="--w1:#1d4034;--w2:#14324a"><div class="sbar"><i></i><i></i></div><div class="snotch collapsed"><div class="art"></div><div class="weq"><i></i><i></i><i></i><i></i></div></div><div class="lyricpill"><svg width="10" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M9 18V5l12-2v13a3 3 0 11-2-2.83V7.5L11 9v9a3 3 0 11-2-2.83z" opacity=".85"/></svg><div class="roll"><div>너와 걷던 그 밤</div><div>별이 쏟아지던 길</div><div>우리 노래가 흐르면</div><div>너와 걷던 그 밤</div></div></div></div></div>
+      <h2 data-i18n="t2h">가사는<br>노래방처럼</h2>
+      <p data-i18n="t2p">지금 부르는 줄이 굴러가며 따라옵니다. 노치 아래 가사 바로 띄워둘 수도 있어요.</p>
+      <div class="art"><div class="screenlet" style="--w1:#1d4034;--w2:#14324a"><div class="sbar"><i></i><i></i></div><div class="snotch collapsed"><div class="art"></div><div class="weq"><i></i><i></i><i></i><i></i></div></div><div class="lyricpill"><svg width="10" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M9 18V5l12-2v13a3 3 0 11-2-2.83V7.5L11 9v9a3 3 0 11-2-2.83z" opacity=".85"/></svg><div class="roll" data-i18n="roll"><div>너와 걷던 그 밤</div><div>별이 쏟아지던 길</div><div>우리 노래가 흐르면</div><div>너와 걷던 그 밤</div></div></div></div></div>
     </div>
     <div class="tile t-cal">
-      <h2>다음 일정도<br>한 줄로</h2>
-      <p>노치를 펼치면 다음 일정이 기다려요. 시작 10분 전엔 조용히 배너로. 구글 캘린더는 맥 캘린더 연동으로.</p>
-      <div class="art"><div class="screenlet" style="--w1:#4a3b1d;--w2:#1d3550"><div class="sbar"><i></i><i></i></div><div class="snotch panel"><div class="prow"><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="4.5" fill="#e5484d"/><rect x="3" y="4.5" width="18" height="6" rx="3" fill="#b93338"/><rect x="7" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="14.4" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="7" y="13" width="4" height="4" rx="1.2" fill="#ffd9d9"/></svg><span class="t">내일 10:00</span><span class="d">치과 예약</span></div></div></div></div>
+      <h2 data-i18n="t3h">다음 일정도<br>한 줄로</h2>
+      <p data-i18n="t3p">노치를 펼치면 다음 일정이 기다려요. 시작 10분 전엔 조용히 배너로. 구글 캘린더는 맥 캘린더 연동으로.</p>
+      <div class="art"><div class="screenlet" style="--w1:#4a3b1d;--w2:#1d3550"><div class="sbar"><i></i><i></i></div><div class="snotch panel"><div class="prow"><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="4.5" fill="#e5484d"/><rect x="3" y="4.5" width="18" height="6" rx="3" fill="#b93338"/><rect x="7" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="14.4" y="2" width="2.6" height="5" rx="1.3" fill="#8f272b"/><rect x="7" y="13" width="4" height="4" rx="1.2" fill="#ffd9d9"/></svg><span class="t" data-i18n="cal1">내일 10:00</span><span class="d" data-i18n="cal2">치과 예약</span></div></div></div></div>
     </div>
     <div class="tile t-hud">
-      <h2>볼륨을 올리면<br>노치가 부풀어요</h2>
-      <p>볼륨 · 밝기 · 에어팟 연결 · 충전까지, 다이나믹 아일랜드처럼 벌어졌다 스르륵 돌아갑니다.</p>
+      <h2 data-i18n="t4h">볼륨을 올리면<br>노치가 부풀어요</h2>
+      <p data-i18n="t4p">볼륨 · 밝기 · 에어팟 연결 · 충전까지, 다이나믹 아일랜드처럼 벌어졌다 스르륵 돌아갑니다.</p>
       <div class="art"><div class="screenlet" style="--w1:#52281d;--w2:#301d50"><div class="sbar"><i></i><i></i></div><div class="snotch hud"><span class="spk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="#fff" stroke="none"/><path d="M15.5 8.5a5 5 0 010 7"/><path d="M18.5 5.5a9 9 0 010 13"/></svg></span><div class="vbar"></div></div></div></div></div>
     </div>
     <div class="tile t-claude wide">
-      <h2>Claude Code가 끝나면, 노치가 알려줘요</h2>
-      <p>답변이 끝나면 클로드가 빼꼼. 클릭하면 그 창으로 바로 이동하고, 세션 사용량은 작은 도넛으로 함께 보여줍니다.</p>
-      <div class="art"><div class="screenlet" style="--w1:#241a30;--w2:#132335"><div class="sbar"><i></i><i></i></div><div class="snotch banner"><svg class="cchar" viewBox="140 118 641 415" aria-hidden="true"><path d="M219.939 128C231.287 128.427 243.841 128.163 255.294 128.163L316.847 128.162L504.334 128.156L635.994 128.152L678.041 128.16C684.188 128.161 694.172 128.458 700.088 128.009L700.003 286.798C726.5 286.369 753.431 286.921 780 286.702V369.651L732.281 369.667C721.737 369.664 710.528 369.882 700.053 369.657C700.209 396.52 699.775 423.589 700.159 450.42C687.428 449.864 673.006 450.96 660.409 450.313C660.956 455.438 660.587 469.605 660.584 475.227C660.503 492.951 660.534 510.674 660.675 528.396L636.041 528.349C631.088 528.342 624.803 528.176 619.987 528.639C619.606 502.914 619.912 476.117 619.99 450.326C610.887 450.689 601.497 450.164 592.362 450.383C588.484 450.473 584.262 450.507 580.409 450.313C580.956 455.438 580.587 469.604 580.584 475.229C580.503 492.942 580.534 510.655 580.675 528.37C569.781 528.673 558.66 528.12 547.744 528.352C545.097 528.408 542.644 528.382 539.987 528.639C539.594 502.939 539.956 476.086 539.975 450.339C502.809 449.908 464.981 450.258 427.771 450.261L395.338 450.267C390.805 450.27 384.258 450.57 380.023 450.305C380.433 476.18 379.813 502.405 380.157 528.364L355.57 528.349C350.391 528.349 344.542 528.233 339.437 528.573C339.106 520.636 339.403 510.354 339.407 502.285L339.384 450.349C333.308 450.683 324.748 450.298 318.438 450.37C313.431 450.426 304.703 450.652 300.02 450.317C300.215 457.758 300.062 465.823 300.062 473.301C299.994 491.654 300.027 510.011 300.158 528.364L275.57 528.349C270.392 528.349 264.541 528.233 259.437 528.573C259.107 520.72 259.404 510.461 259.408 502.451L259.383 450.349C257.722 450.489 255.857 450.367 254.178 450.389C242.82 450.52 231.323 450.039 219.984 450.576C219.624 423.923 219.898 396.301 219.991 369.592C213.39 370.017 204.234 369.56 197.41 369.673C178.491 369.976 158.868 369.229 140 369.764V286.887C166.502 286.855 193.55 286.598 220.021 286.883C219.797 269.281 219.95 251.415 219.95 233.798L219.939 128Z" fill="#181310"/><rect x="299" y="211" width="41" height="76" rx="14" fill="#e9825b"/><rect x="580" y="211" width="41" height="76" rx="14" fill="#e9825b"/></svg>답변 완료<span class="ring" aria-hidden="true"></span></div></div></div>
+      <h2 data-i18n="t5h">Claude Code가 끝나면, 노치가 알려줘요</h2>
+      <p data-i18n="t5p">답변이 끝나면 클로드가 빼꼼. 클릭하면 그 창으로 바로 이동하고, 세션 사용량은 작은 도넛으로 함께 보여줍니다.</p>
+      <div class="art"><div class="screenlet" style="--w1:#241a30;--w2:#132335"><div class="sbar"><i></i><i></i></div><div class="snotch banner"><svg class="cchar" viewBox="140 118 641 415" aria-hidden="true"><path d="M219.939 128C231.287 128.427 243.841 128.163 255.294 128.163L316.847 128.162L504.334 128.156L635.994 128.152L678.041 128.16C684.188 128.161 694.172 128.458 700.088 128.009L700.003 286.798C726.5 286.369 753.431 286.921 780 286.702V369.651L732.281 369.667C721.737 369.664 710.528 369.882 700.053 369.657C700.209 396.52 699.775 423.589 700.159 450.42C687.428 449.864 673.006 450.96 660.409 450.313C660.956 455.438 660.587 469.605 660.584 475.227C660.503 492.951 660.534 510.674 660.675 528.396L636.041 528.349C631.088 528.342 624.803 528.176 619.987 528.639C619.606 502.914 619.912 476.117 619.99 450.326C610.887 450.689 601.497 450.164 592.362 450.383C588.484 450.473 584.262 450.507 580.409 450.313C580.956 455.438 580.587 469.604 580.584 475.229C580.503 492.942 580.534 510.655 580.675 528.37C569.781 528.673 558.66 528.12 547.744 528.352C545.097 528.408 542.644 528.382 539.987 528.639C539.594 502.939 539.956 476.086 539.975 450.339C502.809 449.908 464.981 450.258 427.771 450.261L395.338 450.267C390.805 450.27 384.258 450.57 380.023 450.305C380.433 476.18 379.813 502.405 380.157 528.364L355.57 528.349C350.391 528.349 344.542 528.233 339.437 528.573C339.106 520.636 339.403 510.354 339.407 502.285L339.384 450.349C333.308 450.683 324.748 450.298 318.438 450.37C313.431 450.426 304.703 450.652 300.02 450.317C300.215 457.758 300.062 465.823 300.062 473.301C299.994 491.654 300.027 510.011 300.158 528.364L275.57 528.349C270.392 528.349 264.541 528.233 259.437 528.573C259.107 520.72 259.404 510.461 259.408 502.451L259.383 450.349C257.722 450.489 255.857 450.367 254.178 450.389C242.82 450.52 231.323 450.039 219.984 450.576C219.624 423.923 219.898 396.301 219.991 369.592C213.39 370.017 204.234 369.56 197.41 369.673C178.491 369.976 158.868 369.229 140 369.764V286.887C166.502 286.855 193.55 286.598 220.021 286.883C219.797 269.281 219.95 251.415 219.95 233.798L219.939 128Z" fill="#181310"/><rect x="299" y="211" width="41" height="76" rx="14" fill="#e9825b"/><rect x="580" y="211" width="41" height="76" rx="14" fill="#e9825b"/></svg><span data-i18n="done">답변 완료</span><span class="ring" aria-hidden="true"></span></div></div></div>
     </div>
     <div class="tile t-island wide">
-      <h2>노치가 없어도 괜찮아요</h2>
-      <p>구형 맥북이나 외장 모니터에선 다이나믹 아일랜드처럼 메뉴바에 둥근 캡슐로 떠 있어요. 따로 설정할 것 없이 화면 따라 자동입니다.</p>
+      <h2 data-i18n="t6h">노치가 없어도 괜찮아요</h2>
+      <p data-i18n="t6p">구형 맥북이나 외장 모니터에선 다이나믹 아일랜드처럼 메뉴바에 둥근 캡슐로 떠 있어요. 따로 설정할 것 없이 화면 따라 자동입니다.</p>
       <div class="art"><div class="screenlet" style="--w1:#1d3550;--w2:#3a2b52"><div class="sbar"><i></i><i></i></div><div class="snotch island"><div class="art"></div><div class="weq"><i></i><i></i><i></i><i></i></div></div></div></div>
     </div>
     <div class="tile t-eyes wide">
-      <h2 style="text-align:center">음악이 없을 땐, 그냥 같이 있어요</h2>
-      <p style="text-align:center;margin-left:auto;margin-right:auto">눈만 깜빡이며 기다립니다. 맥이 바쁠수록 눈도 바빠지는 건 비밀. 전체 화면으로 뭔가 볼 땐 스르륵 비켜드려요.</p>
+      <h2 style="text-align:center" data-i18n="t7h">음악이 없을 땐, 그냥 같이 있어요</h2>
+      <p style="text-align:center;margin-left:auto;margin-right:auto" data-i18n="t7p">눈만 깜빡이며 기다립니다. 맥이 바쁠수록 눈도 바빠지는 건 비밀. 전체 화면으로 뭔가 볼 땐 스르륵 비켜드려요.</p>
       <div class="art"><div class="bigeyes"><i></i><i></i></div></div>
     </div>
   </div>
 
   <div class="install">
-    <h2>설치는 3분이면 돼요</h2>
+    <h2 data-i18n="ih">설치는 3분이면 돼요</h2>
     <div class="cols">
       <div class="col">
         <div class="n">1</div>
-        <h3>받아서 드래그</h3>
-        <p>Cove.dmg를 열고 Applications로 옮기세요.</p>
+        <h3 data-i18n="i1h">받아서 드래그</h3>
+        <p data-i18n="i1p">Cove.dmg를 열고 Applications로 옮기세요.</p>
       </div>
       <div class="col">
         <div class="n">2</div>
-        <h3>첫 실행 허용</h3>
-        <p>시스템 설정 → 개인정보 보호 및 보안 → "그래도 열기"<br>또는 <code>xattr -cr /Applications/Cove.app</code></p>
+        <h3 data-i18n="i2h">첫 실행 허용</h3>
+        <p data-i18n="i2p">시스템 설정 → 개인정보 보호 및 보안 → "그래도 열기"<br>또는 <code>xattr -cr /Applications/Cove.app</code></p>
       </div>
       <div class="col">
         <div class="n">3</div>
-        <h3>자동 시작 켜기</h3>
-        <p>메뉴바 노치 아이콘 → 설정에서 로그인 시 자동 시작. 끝!</p>
+        <h3 data-i18n="i3h">자동 시작 켜기</h3>
+        <p data-i18n="i3p">메뉴바 노치 아이콘 → 설정에서 로그인 시 자동 시작. 끝!</p>
       </div>
     </div>
   </div>
 
   <div class="hookbox">
     <div>
-      <h2>Claude Code와<br>함께 쓰세요</h2>
-      <p>Cove 설정에서 <b>자동 설치</b> 버튼 하나면 끝 — 응답이 끝날 때, 그리고 Claude가 질문이나 권한 허락을 기다릴 때 노치가 알려줍니다. 직접 넣고 싶다면 아래처럼. 아무 스크립트에서나 <code>Cove notify "메시지"</code>도 됩니다.</p>
+      <h2 data-i18n="hh">Claude Code와<br>함께 쓰세요</h2>
+      <p data-i18n="hp">Cove 설정에서 <b>자동 설치</b> 버튼 하나면 끝 — 응답이 끝날 때, 그리고 Claude가 질문이나 권한 허락을 기다릴 때 노치가 알려줍니다. 직접 넣고 싶다면 아래처럼. 아무 스크립트에서나 <code>Cove notify "메시지"</code>도 됩니다.</p>
     </div>
 <pre>{
   "hooks": {
@@ -572,12 +574,12 @@
 
   <div class="outro">
     <img class="appicon" src="icon-512.png" alt="" width="88" height="88" style="width:88px;height:88px;transform:rotate(3deg)">
-    <h2>노치에 작은 친구를<br>들여보세요</h2>
-    <div class="cta-row"><a class="btn-big" href="https://github.com/y9260000/cove-releases/releases/latest">Cove 무료로 받기</a></div>
+    <h2 data-i18n="oh">노치에 작은 친구를<br>들여보세요</h2>
+    <div class="cta-row"><a class="btn-big" href="https://github.com/y9260000/cove-releases/releases/latest" data-i18n="og2">Cove 무료로 받기</a></div>
   </div>
 
   <footer>
-    my little notch cove<span class="sep">·</span><a href="https://github.com/y9260000/cove-releases">GitHub</a><span class="sep">·</span><a href="https://github.com/y9260000/cove-releases/issues">버그 제보</a>
+    my little notch cove<span class="sep">·</span><a href="https://github.com/y9260000/cove-releases">GitHub</a><span class="sep">·</span><a href="https://github.com/y9260000/cove-releases/issues" data-i18n="bug">버그 제보</a>
   </footer>
 </div>
 
@@ -590,6 +592,67 @@
       el.style.transform = `translateX(${dx * 16}px)`;
     });
   });
+</script>
+<script>
+  const EN = {
+    m1: 'File', m2: 'Edit', m3: 'View', m1b: 'File', m2b: 'Edit',
+    dl: 'Download', clock: 'Wed 9:41', clock2: 'Wed 9:41',
+    blink: 'blink', dinner: '7:00 PM Dinner', dinner2: '7:00 PM&ensp;Dinner',
+    h1: 'That notch is<br>too good to waste',
+    sub: 'Music · lyrics · calendar · alerts, all living in <em>my little notch cove</em>',
+    get: 'Get it free',
+    meta: 'macOS 14.4+ · Apple Silicon · try hovering the notch up top ↑',
+    pl: 'The current lyric follows along right here',
+    lyb: 'That night we walked, stars pouring down ♪',
+    t1h: 'The notch knows<br>what you\u2019re playing',
+    t1p: 'YouTube Music, Spotify, even a Safari tab — any app that reports playback. The equalizer borrows your album\u2019s colors.',
+    t2h: 'Lyrics,<br>karaoke-style',
+    t2p: 'The current line rolls by in sync. You can pin a floating lyric bar right under the notch, too.',
+    roll: '<div>That night we walked</div><div>stars pouring down the road</div><div>when our song comes on</div><div>That night we walked</div>',
+    t3h: 'Your next event,<br>in one line',
+    t3p: 'Expand the notch and your next event is waiting — with a quiet banner 10 minutes before it starts. Google Calendar syncs through macOS Calendar.',
+    cal1: 'Tmrw 10:00', cal2: 'Dentist',
+    t4h: 'Turn it up —<br>the notch swells',
+    t4p: 'Volume, brightness, AirPods, charging — it stretches out and springs back, Dynamic Island style.',
+    t5h: 'When Claude Code finishes, the notch lets you know',
+    t5p: 'Claude peeks out when a response lands. Click to jump straight to that window — session usage rides along as a tiny donut.',
+    done: 'Done!',
+    t6h: 'No notch? No problem',
+    t6p: 'On older MacBooks and external displays, Cove floats as a rounded capsule in the menu bar — automatic, per screen.',
+    t7h: 'When nothing\u2019s playing, it just keeps you company',
+    t7p: 'It blinks and waits. The busier your Mac, the busier the blinking — our little secret. And it slides out of the way for fullscreen.',
+    ih: 'Installed in 3 minutes',
+    i1h: 'Download & drag', i1p: 'Open Cove.dmg and drop it into Applications.',
+    i2h: 'Allow first launch', i2p: 'System Settings → Privacy & Security → \u201cOpen Anyway\u201d<br>or <code>xattr -cr /Applications/Cove.app</code>',
+    i3h: 'Start at login', i3p: 'Menu bar notch icon → Settings → launch at login. Done!',
+    hh: 'Made for<br>Claude Code',
+    hp: 'One <b>Auto-install</b> button in Cove\u2019s settings and you\u2019re set — the notch pings you when a response finishes, or when Claude is waiting on your OK. Prefer wiring it yourself? See below. Any script can call <code>Cove notify "message"</code> too.',
+    oh: 'Let a little friend<br>move into your notch',
+    og2: 'Get Cove free',
+    bug: 'Report a bug',
+  };
+  const KO = {};
+  function applyLang(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.dataset.i18n;
+      if (!(k in KO)) KO[k] = el.innerHTML;
+      const next = lang === 'en' ? (EN[k] ?? KO[k]) : KO[k];
+      if (el.innerHTML !== next) el.innerHTML = next;
+    });
+    document.documentElement.lang = lang;
+    const btn = document.querySelector('.langbtn');
+    if (btn) btn.textContent = lang === 'en' ? '한국어' : 'EN';
+    try { localStorage.setItem('cove-lang', lang); } catch (e) {}
+  }
+  function toggleLang() {
+    applyLang(document.documentElement.lang === 'en' ? 'ko' : 'en');
+  }
+  (() => {
+    let lang;
+    try { lang = localStorage.getItem('cove-lang'); } catch (e) {}
+    if (!lang) lang = (navigator.language || '').toLowerCase().startsWith('ko') ? 'ko' : 'en';
+    if (lang === 'en') applyLang('en');
+  })();
 </script>
 </body>
 </html>
