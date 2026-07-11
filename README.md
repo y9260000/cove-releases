@@ -30,7 +30,7 @@
 
 ### Claude Code 연동 (선택)
 
-`~/.claude/settings.json`에 훅을 추가하면 Claude가 응답을 마칠 때(`Stop`), 그리고 질문이나 권한 허락을 기다릴 때(`Notification`) 노치에 알림이 떠요:
+**가장 쉬운 방법: 메뉴바 노치 아이콘 → 설정 → "Claude Code 훅"의 자동 설치 버튼.** 직접 넣으려면 `~/.claude/settings.json`에 아래 훅을 추가하세요 — Claude가 응답을 마칠 때(`Stop`), 그리고 질문이나 권한 허락을 기다릴 때(`Notification`) 노치에 알림이 떠요:
 
 ```json
 {
