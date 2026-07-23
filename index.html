@@ -407,6 +407,30 @@
   .snotch.hud .spk { display: flex; color: #fff; }
   .snotch.hud .vbar { width: 84px; height: 3.5px; border-radius: 3px; background: rgba(255,255,255,.22); position: relative; }
   .snotch.hud .vbar::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 58%; border-radius: 3px; background: #fff; }
+  .snotch.agent {
+    width: 236px; height: 34px; gap: 8px; padding: 0 14px;
+  }
+  .snotch.agent .orb {
+    width: 13px; height: 13px; border-radius: 50%; flex: none;
+    border: 2px dotted #ff8a4d;
+    animation: orbspin 2.6s linear infinite;
+    position: relative;
+  }
+  .snotch.agent .orb::after {
+    content: ""; position: absolute; inset: 3px; border-radius: 50%;
+    border: 1.5px dotted rgba(120,140,255,.9);
+    animation: orbspin 3.8s linear infinite reverse;
+  }
+  @keyframes orbspin { to { transform: rotate(360deg); } }
+  .snotch.agent .run {
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px; font-weight: 600; color: #fff; letter-spacing: .03em;
+  }
+  .snotch.agent .cnt {
+    margin-left: auto;
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    font-size: 11px; color: rgba(255,255,255,.55);
+  }
   .snotch.banner {
     background: var(--orange); color: var(--ink);
     width: max-content; height: 40px; gap: 10px; padding: 0 20px;
@@ -520,6 +544,11 @@
       <p data-i18n="t5p">답변이 끝나면 클로드가 빼꼼. 클릭하면 그 창으로 바로 이동하고, 세션 사용량은 작은 도넛으로 함께 보여줍니다.</p>
       <div class="art"><div class="screenlet" style="--w1:#241a30;--w2:#132335"><div class="sbar"><i></i><i></i></div><div class="snotch banner"><svg class="cchar" viewBox="140 118 641 415" aria-hidden="true"><path d="M219.939 128C231.287 128.427 243.841 128.163 255.294 128.163L316.847 128.162L504.334 128.156L635.994 128.152L678.041 128.16C684.188 128.161 694.172 128.458 700.088 128.009L700.003 286.798C726.5 286.369 753.431 286.921 780 286.702V369.651L732.281 369.667C721.737 369.664 710.528 369.882 700.053 369.657C700.209 396.52 699.775 423.589 700.159 450.42C687.428 449.864 673.006 450.96 660.409 450.313C660.956 455.438 660.587 469.605 660.584 475.227C660.503 492.951 660.534 510.674 660.675 528.396L636.041 528.349C631.088 528.342 624.803 528.176 619.987 528.639C619.606 502.914 619.912 476.117 619.99 450.326C610.887 450.689 601.497 450.164 592.362 450.383C588.484 450.473 584.262 450.507 580.409 450.313C580.956 455.438 580.587 469.604 580.584 475.229C580.503 492.942 580.534 510.655 580.675 528.37C569.781 528.673 558.66 528.12 547.744 528.352C545.097 528.408 542.644 528.382 539.987 528.639C539.594 502.939 539.956 476.086 539.975 450.339C502.809 449.908 464.981 450.258 427.771 450.261L395.338 450.267C390.805 450.27 384.258 450.57 380.023 450.305C380.433 476.18 379.813 502.405 380.157 528.364L355.57 528.349C350.391 528.349 344.542 528.233 339.437 528.573C339.106 520.636 339.403 510.354 339.407 502.285L339.384 450.349C333.308 450.683 324.748 450.298 318.438 450.37C313.431 450.426 304.703 450.652 300.02 450.317C300.215 457.758 300.062 465.823 300.062 473.301C299.994 491.654 300.027 510.011 300.158 528.364L275.57 528.349C270.392 528.349 264.541 528.233 259.437 528.573C259.107 520.72 259.404 510.461 259.408 502.451L259.383 450.349C257.722 450.489 255.857 450.367 254.178 450.389C242.82 450.52 231.323 450.039 219.984 450.576C219.624 423.923 219.898 396.301 219.991 369.592C213.39 370.017 204.234 369.56 197.41 369.673C178.491 369.976 158.868 369.229 140 369.764V286.887C166.502 286.855 193.55 286.598 220.021 286.883C219.797 269.281 219.95 251.415 219.95 233.798L219.939 128Z" fill="#181310"/><rect x="299" y="211" width="41" height="76" rx="14" fill="#e9825b"/><rect x="580" y="211" width="41" height="76" rx="14" fill="#e9825b"/></svg><span data-i18n="done">답변 완료</span><span class="ring" aria-hidden="true"></span></div></div></div>
     </div>
+    <div class="tile t-agent wide">
+      <h2 data-i18n="t8h">Claude Code · Codex가<br>일하는 게 보여요</h2>
+      <p data-i18n="t8p">에이전트가 도는 동안 파티클 오브가 노치에서 반짝여요. 펼치면 프로젝트별 세션 리스트 — 생각 중인지, 어떤 도구로 작업 중인지, 몇 분째인지. 카드를 누르면 그 터미널로 바로 이동합니다. 음악 재생 중엔 옆에 작은 버블로 살짝 비켜서 떠 있어요.</p>
+      <div class="art"><div class="screenlet" style="--w1:#1d2a45;--w2:#30204a"><div class="sbar"><i></i><i></i></div><div class="snotch agent"><span class="orb" aria-hidden="true"></span><span class="run">Running</span><span class="cnt">2 sessions</span></div></div></div>
+    </div>
     <div class="tile t-island wide">
       <h2 data-i18n="t6h">노치가 없어도 괜찮아요</h2>
       <p data-i18n="t6p">구형 맥북이나 외장 모니터에선 다이나믹 아일랜드처럼 메뉴바에 둥근 캡슐로 떠 있어요. 따로 설정할 것 없이 화면 따라 자동입니다.</p>
@@ -556,7 +585,7 @@
   <div class="hookbox">
     <div>
       <h2 data-i18n="hh">Claude Code와<br>함께 쓰세요</h2>
-      <p data-i18n="hp">Cove 설정에서 <b>자동 설치</b> 버튼 하나면 끝 — 응답이 끝날 때, 그리고 Claude가 질문이나 권한 허락을 기다릴 때 노치가 알려줍니다. 직접 넣고 싶다면 아래처럼. 아무 스크립트에서나 <code>Cove notify "메시지"</code>도 됩니다.</p>
+      <p data-i18n="hp">Cove 설정에서 <b>자동 설치</b> 버튼 하나면 끝 — 응답이 끝날 때, Claude가 확인을 기다릴 때, 그리고 세션이 도는 내내 Running 표시까지 전부 연결됩니다. Codex는 notify 연동으로 턴 완료를 알려줘요. 직접 넣고 싶다면 아래처럼. 아무 스크립트에서나 <code>Cove notify "메시지"</code>도 됩니다.</p>
     </div>
 <pre>{
   "hooks": {
@@ -617,6 +646,8 @@
     t5h: 'When Claude Code finishes, the notch lets you know',
     t5p: 'Claude peeks out when a response lands. Click to jump straight to that window — session usage rides along as a tiny donut.',
     done: 'Done!',
+    t8h: 'Watch Claude Code · Codex at work',
+    t8p: 'While an agent runs, a particle orb shimmers in the notch. Expand it for a per-project session list — thinking or working, which tool, for how long. Click a card to land in that terminal. With music playing, it splits into a little side bubble instead.',
     t6h: 'No notch? No problem',
     t6p: 'On older MacBooks and external displays, Cove floats as a rounded capsule in the menu bar — automatic, per screen.',
     t7h: 'When nothing\u2019s playing, it just keeps you company',
@@ -626,7 +657,7 @@
     i2h: 'Allow first launch', i2p: 'System Settings → Privacy & Security → \u201cOpen Anyway\u201d<br>or <code>xattr -cr /Applications/Cove.app</code>',
     i3h: 'Start at login', i3p: 'Menu bar notch icon → Settings → launch at login. Done!',
     hh: 'Made for<br>Claude Code',
-    hp: 'One <b>Auto-install</b> button in Cove\u2019s settings and you\u2019re set — the notch pings you when a response finishes, or when Claude is waiting on your OK. Prefer wiring it yourself? See below. Any script can call <code>Cove notify "message"</code> too.',
+    hp: 'One <b>Auto-install</b> button in Cove\u2019s settings wires it all — a ping when a response finishes, when Claude waits on your OK, and the Running indicator for the whole session. Codex chimes in through its notify hook. Prefer wiring it yourself? See below. Any script can call <code>Cove notify "message"</code> too.',
     oh: 'Let a little friend<br>move into your notch',
     og2: 'Get Cove free',
     bug: 'Report a bug',
